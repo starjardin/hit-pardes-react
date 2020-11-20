@@ -1,0 +1,74 @@
+body {font-family: "Poppins";
+
+}
+
+.song-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  background-color: #111111;
+  margin-block-end: 1rem;
+  color: #ffffff;
+  padding: 1rem;
+  justify-content: space-between;
+  grid-gap: 1rem;
+}
+
+.song-title {
+  grid-column: 2/4;
+  h2, p {
+    margin: 0;
+  }
+}
+
+.like, .unlike {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-block: .3rem;
+  cursor: pointer;
+}
+
+.like {
+  background-image: url("./assets/up-arrow.svg");
+}
+
+.unlike {
+  background-image: url("./assets/down-arrow.svg");
+}
+
+img {
+  width: 50%;
+  height: 50%;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.styles {
+  text-transform: capitalize;
+}
+
+input,select, textarea {
+  display: block;
+}
+
+ul {
+  padding: 0;
+}
+
+.shopping-cart, .favorite {
+  cursor: pointer;
+}
+
+.cart-songs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  div {
+    grid-column: 2/5;
+  }
+}

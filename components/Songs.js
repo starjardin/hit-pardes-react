@@ -1,13 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { SongsContext } from '../context/songContext'
 import SongsLists from './songsLists'
 
 export default function Songs() {
-  const { allSongs } = useContext(SongsContext)
+  const { sortedSongs } = useContext(SongsContext)
+
   return (
     <ul>
-      {allSongs.map(song => (
-        <SongsLists key={song.id} song={song}/>
+      {sortedSongs.map((song, index) => (
+        <SongsLists key={index} song={song}/>
       ))}
     </ul>
   )

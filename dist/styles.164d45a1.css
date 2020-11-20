@@ -1,2 +1,76 @@
+body {
+  font-family: "Poppins";
+}
+
+.song-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  background-color: #111111;
+  margin-block-end: 1rem;
+  color: #ffffff;
+  padding: 1rem;
+  justify-content: space-between;
+  grid-gap: 1rem;
+}
+
+.song-title {
+  grid-column: 2/4;
+}
+.song-title h2, .song-title p {
+  margin: 0;
+}
+
+.like, .unlike {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-block: 0.3rem;
+  cursor: pointer;
+}
+
+.like {
+  background-image: url("/up-arrow.6046179d.svg");
+}
+
+.unlike {
+  background-image: url("/down-arrow.39fba8f1.svg");
+}
+
+img {
+  width: 50%;
+  height: 50%;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.styles {
+  text-transform: capitalize;
+}
+
+input, select, textarea {
+  display: block;
+}
+
+ul {
+  padding: 0;
+}
+
+.shopping-cart, .favorite {
+  cursor: pointer;
+}
+
+.cart-songs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+}
+.cart-songs div {
+  grid-column: 2/5;
+}
 
 /*# sourceMappingURL=/styles.164d45a1.css.map */
