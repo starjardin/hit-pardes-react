@@ -1,5 +1,7 @@
 # Hit parade project
 
+<a href="https://hit-parades-react-tantely.netlify.app/">Demo</a>
+
 Instructions : 
 Code this hit parade with react, react-router and context!
 Set up your own repo and project structure from scratch. 
