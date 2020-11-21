@@ -34099,16 +34099,6 @@ function SongsContextProvider(_ref) {
       songIsAddedToCart = _useState8[0],
       setSonIsAddedToCart = _useState8[1];
 
-  var _useState9 = (0, _react.useState)(0),
-      _useState10 = _slicedToArray(_useState9, 2),
-      like = _useState10[0],
-      setLike = _useState10[1];
-
-  var _useState11 = (0, _react.useState)(0),
-      _useState12 = _slicedToArray(_useState11, 2),
-      unlike = _useState12[0],
-      setUnlike = _useState12[1];
-
   function likeSong() {
     setLike(function (prev) {
       return prev + 1;
@@ -34137,8 +34127,6 @@ function SongsContextProvider(_ref) {
       return [].concat(_toConsumableArray(prevSongs), [newSongs]);
     });
   }
-
-  console.log(cartItems);
 
   function toggleFavorite(songId) {
     var favoriteSongs = allSongs.map(function (song) {
@@ -34184,11 +34172,8 @@ function SongsContextProvider(_ref) {
     value: {
       allSongs: allSongs,
       sortedSongs: sortedSongs,
-      like: like,
-      unlike: unlike,
       setAllSongs: setAllSongs,
       likeSong: likeSong,
-      unlikeSong: unlikeSong,
       cartItems: cartItems,
       songIsAddedToCart: songIsAddedToCart,
       addToCart: addToCart,
@@ -34224,8 +34209,9 @@ function Cart() {
   var _useContext = (0, _react.useContext)(_songContext.SongsContext),
       cartItems = _useContext.cartItems;
 
-  var totalPrice = cartItems.reduce(function (acc, value) {}, 0);
-  console.log(totalPrice);
+  var totalPrice = cartItems.reduce(function (acc, song) {
+    return acc + song.price;
+  }, 0);
   var cartItemsElements = cartItems.map(function (song, index) {
     return /*#__PURE__*/_react.default.createElement("li", {
       className: "cart-songs",
@@ -34235,7 +34221,10 @@ function Cart() {
       alt: "trash"
     }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, song.title), /*#__PURE__*/_react.default.createElement("h5", null, song.artist)), /*#__PURE__*/_react.default.createElement("p", null, "$", song.price));
   });
-  return /*#__PURE__*/_react.default.createElement("div", null, cartItemsElements);
+  return /*#__PURE__*/_react.default.createElement("div", null, cartItemsElements, cartItemsElements.length > 0 && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", null, "By Now"), /*#__PURE__*/_react.default.createElement("p", null, totalPrice.toLocaleString("en-US", {
+    style: "currency",
+    currency: "URO"
+  }))));
 }
 },{"react":"node_modules/react/index.js","../context/songContext":"context/songContext.js","../assets/trash.svg":"assets/trash.svg"}],"components/Header.js":[function(require,module,exports) {
 "use strict";
@@ -34602,7 +34591,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63125" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63031" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

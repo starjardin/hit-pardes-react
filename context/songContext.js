@@ -7,8 +7,6 @@ function SongsContextProvider ({children}) {
   const [ sortedSongs, setSortedSongs ] = useState([])
   const [ cartItems, setCartItems ] = useState([])
   const [ songIsAddedToCart, setSonIsAddedToCart] = useState(false)
-  const [like, setLike] = useState(0)
-  const [unlike, setUnlike] = useState(0)
 
   function likeSong () {
     setLike(prev => prev + 1)
@@ -33,7 +31,6 @@ function SongsContextProvider ({children}) {
   function addToCart (newSongs) {
     setCartItems(prevSongs => [...prevSongs, newSongs])
   }
-  console.log(cartItems);
 
   function toggleFavorite (songId) {
     const favoriteSongs = allSongs.map(song => {
@@ -79,8 +76,8 @@ function SongsContextProvider ({children}) {
   return (
     <SongsContext.Provider
       value={{
-        allSongs, sortedSongs, like, unlike,
-        setAllSongs, likeSong, unlikeSong, cartItems, songIsAddedToCart, addToCart, toggleFavorite, funcLikeSongs, funcUnlikeSongs
+        allSongs, sortedSongs,
+        setAllSongs, likeSong, cartItems, songIsAddedToCart, addToCart, toggleFavorite, funcLikeSongs, funcUnlikeSongs
       }}
     >
       {children}

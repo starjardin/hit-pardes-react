@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { SongsContext } from '../context/songContext'
 import SongsLists from './songsLists'
 
