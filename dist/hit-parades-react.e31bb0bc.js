@@ -33853,70 +33853,7 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"components/AddSongs.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = AddSongs;
-
-var _react = _interopRequireWildcard(require("react"));
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function AddSongs() {
-  var _useState = (0, _react.useState)({}),
-      _useState2 = _slicedToArray(_useState, 2),
-      newSongs = _useState2[0],
-      setNewSongs = _useState2[1];
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    var _e$target = e.target,
-        name = _e$target.name,
-        value = _e$target.value;
-    console.log(e.target);
-    setNewSongs(_defineProperty({}, name, value));
-  }
-
-  console.log(newSongs);
-  return /*#__PURE__*/_react.default.createElement("form", {
-    action: "#",
-    onSubmit: handleSubmit
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    name: "title",
-    placeholder: "Title"
-  }), /*#__PURE__*/_react.default.createElement("input", {
-    name: "artist",
-    placeholder: "Artist"
-  }), /*#__PURE__*/_react.default.createElement("input", {
-    name: "price",
-    placeholder: "Price"
-  }), /*#__PURE__*/_react.default.createElement("select", null, /*#__PURE__*/_react.default.createElement("option", null), /*#__PURE__*/_react.default.createElement("option", null), /*#__PURE__*/_react.default.createElement("option", null), /*#__PURE__*/_react.default.createElement("option", null)), /*#__PURE__*/_react.default.createElement("textarea", {
-    name: "lyrics",
-    placeholder: "Lyrics"
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    className: "btn-submit"
-  }, "add"));
-}
-},{"react":"node_modules/react/index.js"}],"songs.js":[function(require,module,exports) {
+},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"songs.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33930,6 +33867,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var songs = [(_ref = {
   title: "American Girl",
+  addedToCart: false,
   artist: "Tom Petty",
   year: "1977",
   id: 1347538505564516,
@@ -33941,6 +33879,7 @@ var songs = [(_ref = {
   price: 34
 }, _defineProperty(_ref, "style", "country"), _defineProperty(_ref, "lyrics", "Well she was an American girl \n                Raised on promises\n                She couldn't help thinkin' that there\n                Was a little more to life\n                Somewhere else\n                After all it was a great big world\n                With lots of places to run to\n                Yeah, and if she had to die tryin'\n                She had one little promise\n                She was gonna keep\n                Oh yeah, alright\n                Take it easy baby\n                Make it last all night\n                She was an American girl\n                Well, it was kind of cold that night\n                She stood alone on her balcony\n                Yeah, she could hear the cars roll by\n                Out on 441\n                Like waves crashin' on the beach\n                And for one\u2026"), _ref), (_ref2 = {
   title: "American Music",
+  addedToCart: false,
   artist: "Violent Femmes",
   year: "1991",
   id: 753850556416,
@@ -33952,6 +33891,7 @@ var songs = [(_ref = {
   price: 44
 }, _defineProperty(_ref2, "style", "hip-hop"), _defineProperty(_ref2, "lyrics", "Do you like American music\n                I like American music\n                Don't you like American music baby\n                I want you to hold me\n                I want your arms around me\n                I want you to hold me baby\n                Did you do too many drugs\n\n                I did too many drugs\n                Did you do too many drugs too baby\n                You were born too late\n                I was born too soon\n                But every time I look at that ugly moon\n                It reminds me of you\n                It reminds me of you ooh ooh ooh\n                I need a date to the prom\n                Would you like to come along\n                But nobody would go to the prom with me baby\n\n                They didn't like American music\n                They never heard American music\n                They didn't know the music was in my soul baby\n                You were born too soon\n                I was born too late\n                But every time I look at that ugly lake\n                It reminds me of me\n                It reminds me of me\n                Do you like American music\n                We like\u2026"), _ref2), (_ref3 = {
   title: "American Pie",
+  addedToCart: false,
   artist: "Don McLean",
   year: "1972",
   id: 538505564676,
@@ -33963,6 +33903,7 @@ var songs = [(_ref = {
   price: 23
 }, _defineProperty(_ref3, "style", "Jazz"), _defineProperty(_ref3, "lyrics", "A long long time ago\n              I can still remember how\n              That music used to make me smile\n              And I knew if I had my chance\n              That I could make those people dance\n              And maybe they'd be happy for a while\n              But February made me shiver\n              With every paper I'd deliver\n\n              Bad news on the doorstep\n              I couldn't take one more step\n              I can't remember if I cried\n              When I read about his widowed bride\n              Something touched me deep inside\n              The day the music died\n              So"), _ref3), (_ref4 = {
   title: "A Sailor's Christmas",
+  addedToCart: false,
   artist: "Jimmy Buffett",
   year: "1996",
   id: 134753850556445,
@@ -33974,6 +33915,7 @@ var songs = [(_ref = {
   price: 56
 }, _defineProperty(_ref4, "style", "Metal"), _defineProperty(_ref4, "lyrics", "\n                Sail on the horizons gotta landfall rendezvous\n                Captain steers a well-known course, he steers straight & true\n                As he trims the sheets, he sings a song\n                He learned on boats and bars\n\n                Sailor spends his Christmas in a harbour 'neath the stars\n                He's traveled through the doldrums, typhoons and hurricanes\n                He's logged a million soggy miles with water on his brain\n                But Christmas is the season better suited for dry land\n                He'll tell some lies, meet some spies\n                And dance barefoot in the sand\n                The sailor spends his Christmas in a harbour on the hook\n                Caye con les, no work today, let's shell the ol' log book\n                The waterfront is reveling, the season has begun\n\n                The sailor spends his Christmas in a harbour having fun.\n                There's a party down at Le Selecte, music, rum and cheers\n                Faces\u2026"), _ref4), (_ref5 = {
   title: "Badfish",
+  addedToCart: false,
   artist: "Sublime",
   year: "1996",
   id: 347578544564145,
@@ -33985,6 +33927,7 @@ var songs = [(_ref = {
   price: 45
 }, _defineProperty(_ref5, "style", "K-popp"), _defineProperty(_ref5, "lyrics", "When you grab a hold of me\n                Tell me that I'll never be set free\n                But I'm a parasite,\n                Creep and crawl I step into the night.\n                Two pints of booze\n                Tell me are you a badfish too?\n\n                Are you a badfish too?\n                Ain't got no money to spend\n                I hope the night will never end\n                Lord knows I'm weak\n                Won't somebody get me off of this reef\n                Baby you're a big blue whale\n                Grab the reef when all duck diving fails\n\n                I swim, but wish I'd never learned\n                The water's too polluted with the germs\n                I dive deep when it's ten feet overhead\n                Grab the reef underneath my bed (it's underneath my bed)\u2026"), _ref5), (_ref6 = {
   title: "Banana Pancakes",
+  addedToCart: false,
   artist: "Jack Johnson",
   year: "2005",
   id: 43564126,
@@ -33995,6 +33938,7 @@ var songs = [(_ref = {
   favorite: "fasle"
 }, _defineProperty(_ref6, "style", "oldies"), _defineProperty(_ref6, "price", 30), _defineProperty(_ref6, "lyrics", "Can't you see that it's just rainin'\n                Ain't no need to go outside\n                But baby\n                You hardly even notice\n                When I try to show you this\n                Song is meant to keep you\n                Doin' what you're supposed to\n\n                Wakin' up too early\n                Maybe we could sleep in\n                Make you banana pancakes\n                Pretend like its the weekend now\n                We could pretend it all the time\n                Can't you see that it's just rainin'\n                There ain't no need to go outside\n                Just maybe\n\n                Halaka ukulele mama made a baby\n                Really don't mind the practice\n                Cause you're my little lady\n                Lady lady love me\n                Cause I love to lay here lazy\n                We could close the curtains\n                Pretend like there's no world outside\n\n                We could pretend it all the time\n                And can't you see that it's just rainin'\n                There ain't no need to go outside\n                Ain't no need ain't no need\n                Mmm, mmm, mmm\n                Can't you see can't you\u2026"), _ref6), (_ref7 = {
   title: "Big Parade",
+  addedToCart: false,
   artist: "The Lumineers",
   year: "2012",
   id: 538505542342426,
@@ -34006,6 +33950,7 @@ var songs = [(_ref = {
   price: 21
 }, _defineProperty(_ref7, "style", "rap"), _defineProperty(_ref7, "lyrics", "Lovely girl won't you stay, won't you stay, stay with me\n                All my life I was blind, I was blind, now I see\n                Lovely girl won't you stay, won't you stay, stay with me\n                All my life I was blind, I was blind, now I see\n                Fleet of black, fleet of black limousines\n\n                Oh tinted machines, here comes the cavalcade\n                With the armored cars, armored cars like Barettas\n                Flags on antennae designed to keep me safe, keep me safe\n                And oh my my, oh hey hey\n                Here he comes, the candidate\n                Blue eyed boy, United States\n                Vote for him, the candidate\n                Diamonds cut, diamonds cut for the karats\n\n                Plaster of Paris, the floats fill up the street\n                And the beauty queens, beauty queens with the white gloves\n                All sick from the night clubs, they wave with pageantry, pageantry\n                And oh my my, oh hey hey\n                Here it\u2026"), _ref7), (_ref8 = {
   title: "Brown Eyed Girl",
+  addedToCart: false,
   artist: "Van Morrison",
   year: "1967",
   id: 352316343,
@@ -34016,6 +33961,7 @@ var songs = [(_ref = {
   favorite: "fasle"
 }, _defineProperty(_ref8, "style", "Jazz"), _defineProperty(_ref8, "price", 123), _defineProperty(_ref8, "lyrics", "Hey, where did we go?\n                Days when the rains came\n                Down in the hollow\n                Playin' a new game\n                Laughing and a running hey, hey\n\n                Skipping and a jumping\n                In the misty morning fog with\n                Our hearts a thumpin' and you\n                My brown-eyed girl\n                You, my brown-eyed girl\n                Whatever happened\n                To Tuesday and so slow?\n                Going down the old mine\n\n                With a transistor radio\n                Standing in the sunlight laughing\n                Hiding behind a rainbow's wall\n                Slipping and sliding\n                All along the waterfall, with you\n                My brown-eyed girl\n                You, my brown-eyed girl\n                Do you remember when we used to sing\n                Sha la la la la la la la la la la te da\n                Just like that\n\n                Sha la la la la la la la la la la te da, la te da\n                So hard to find my way\n                Now that I'm all on my own\n                I saw you just the other day\n                My, how you have grown\n                Cast my memory back there, Lord\u2026"), _ref8), (_ref9 = {
   title: "Cape Canaveral",
+  addedToCart: false,
   artist: "Conor Oberst",
   year: "2008",
   id: 8545523452463423,
@@ -34052,14 +33998,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -34094,23 +34032,6 @@ function SongsContextProvider(_ref) {
       cartItems = _useState6[0],
       setCartItems = _useState6[1];
 
-  var _useState7 = (0, _react.useState)(false),
-      _useState8 = _slicedToArray(_useState7, 2),
-      songIsAddedToCart = _useState8[0],
-      setSonIsAddedToCart = _useState8[1];
-
-  function likeSong() {
-    setLike(function (prev) {
-      return prev + 1;
-    });
-  }
-
-  function unlikeSong() {
-    setUnlike(function (prev) {
-      return prev + 1;
-    });
-  }
-
   (0, _react.useEffect)(function () {
     setAllSongs(_songs.default);
   }, []);
@@ -34122,11 +34043,24 @@ function SongsContextProvider(_ref) {
     }));
   }, [allSongs]);
 
-  function addToCart(newSongs) {
-    setCartItems(function (prevSongs) {
-      return [].concat(_toConsumableArray(prevSongs), [newSongs]);
+  function addToCart(songId) {
+    var added = allSongs.map(function (song) {
+      if (song.id === songId) {
+        return _objectSpread(_objectSpread({}, song), {}, {
+          addedToCart: !song.addedToCart
+        });
+      }
+
+      return song;
     });
+    setAllSongs(added);
   }
+
+  (0, _react.useEffect)(function () {
+    setCartItems(allSongs.filter(function (song) {
+      return song.addedToCart;
+    }));
+  }, [allSongs]);
 
   function toggleFavorite(songId) {
     var favoriteSongs = allSongs.map(function (song) {
@@ -34173,9 +34107,7 @@ function SongsContextProvider(_ref) {
       allSongs: allSongs,
       sortedSongs: sortedSongs,
       setAllSongs: setAllSongs,
-      likeSong: likeSong,
       cartItems: cartItems,
-      songIsAddedToCart: songIsAddedToCart,
       addToCart: addToCart,
       toggleFavorite: toggleFavorite,
       funcLikeSongs: funcLikeSongs,
@@ -34183,7 +34115,132 @@ function SongsContextProvider(_ref) {
     }
   }, children);
 }
-},{"react":"node_modules/react/index.js","../songs.js":"songs.js"}],"assets/trash.svg":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../songs.js":"songs.js"}],"components/AddSongs.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = AddSongs;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _songContext = require("../context/songContext");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function AddSongs() {
+  var _useContext = (0, _react.useContext)(_songContext.SongsContext),
+      allSongs = _useContext.allSongs,
+      setAllSongs = _useContext.setAllSongs;
+
+  var _useState = (0, _react.useState)({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      newSongs = _useState2[0],
+      setNewSongs = _useState2[1];
+
+  var songs = allSongs.map(function (song) {
+    return song.style;
+  });
+
+  var allStyles = _toConsumableArray(new Set(songs));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    var _e$target = e.target,
+        title = _e$target.title,
+        artist = _e$target.artist,
+        price = _e$target.price,
+        lyrics = _e$target.lyrics,
+        style = _e$target.style;
+    if (title.value.trim() === "" && artist.value.trim() === "" && lyrics.value === "") return;
+    if (lyrics.value.trim().length > 50) return;
+    setNewSongs({
+      title: title.value,
+      artist: artist.value,
+      like: 0,
+      unlike: 0,
+      year: "",
+      id: Date.now(),
+      style: style.value,
+      duration: "",
+      favorite: false,
+      price: price.value,
+      lyrics: lyrics.value,
+      addedToCart: false
+    });
+    e.target.reset();
+  }
+
+  (0, _react.useEffect)(function () {
+    if (!newSongs.title) return null;
+    setAllSongs(function (prevSongs) {
+      return [].concat(_toConsumableArray(prevSongs), [newSongs]);
+    });
+  }, [newSongs]);
+  return /*#__PURE__*/_react.default.createElement("form", {
+    action: "#",
+    onSubmit: handleSubmit,
+    className: "addSong"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "title",
+    placeholder: "Title",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "artist",
+    placeholder: "Artist",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "number",
+    name: "price",
+    placeholder: "Price",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("input", {
+    type: "date",
+    name: "date",
+    placeholder: "Date",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("select", {
+    className: "select",
+    name: "style"
+  }, allStyles.map(function (style, index) {
+    return /*#__PURE__*/_react.default.createElement("option", {
+      key: index,
+      value: style
+    }, style);
+  })), /*#__PURE__*/_react.default.createElement("textarea", {
+    name: "lyrics",
+    placeholder: "Lyrics",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "btn-submit"
+  }, "add"));
+}
+},{"react":"node_modules/react/index.js","../context/songContext":"context/songContext.js"}],"assets/trash.svg":[function(require,module,exports) {
 module.exports = "/trash.46c8aa90.svg";
 },{}],"components/Cart.js":[function(require,module,exports) {
 "use strict";
@@ -34247,7 +34304,7 @@ function Header() {
     to: "/"
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: "header-heading"
-  }, "Ppular Songs")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  }, "Pular Songs")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/styles"
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: "header-heading"
@@ -34287,8 +34344,9 @@ function Lyrics() {
       allSongs = _useContext.allSongs;
 
   var songWithLyrics = allSongs.find(function (song) {
-    return song.id = songId;
+    return song.id === Number(songId);
   });
+  console.log(songWithLyrics);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Lyrics"), /*#__PURE__*/_react.default.createElement("p", {
     className: "lyrics"
   }, songWithLyrics.lyrics));
@@ -34338,12 +34396,11 @@ function SongsLists(_ref) {
 
   var _useContext = (0, _react.useContext)(_songContext.SongsContext),
       funcUnlikeSongs = _useContext.funcUnlikeSongs,
-      songIsAddedToCart = _useContext.songIsAddedToCart,
       funcLikeSongs = _useContext.funcLikeSongs,
       addToCart = _useContext.addToCart,
       toggleFavorite = _useContext.toggleFavorite;
 
-  var cartSource = songIsAddedToCart ? _fullShoppingCart.default : _shoppingCart.default;
+  var cartSource = song.addedToCart ? _fullShoppingCart.default : _shoppingCart.default;
   var heartSource = song.favorite ? _heart.default : _fullHeart.default;
   return /*#__PURE__*/_react.default.createElement("li", {
     className: "song-container"
@@ -34369,7 +34426,7 @@ function SongsLists(_ref) {
   }, song.unlike), /*#__PURE__*/_react.default.createElement("img", {
     src: cartSource,
     onClick: function onClick() {
-      return addToCart(song);
+      return addToCart(song.id);
     },
     alt: "shopping-chart",
     className: "shopping-cart"
@@ -34440,11 +34497,17 @@ function StyleName() {
   var songsFilterdByStyle = allSongs.filter(function (song) {
     return song.style.toLowerCase() === styleName.toLowerCase();
   });
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, styleName), /*#__PURE__*/_react.default.createElement("ul", null, songsFilterdByStyle.map(function (song) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "style-container"
+  }, /*#__PURE__*/_react.default.createElement("h3", {
+    className: "style-header"
+  }, " \uD83C\uDFA7", styleName), /*#__PURE__*/_react.default.createElement("ul", null, songsFilterdByStyle.map(function (song) {
     return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
       to: "/song/".concat(song.id),
       key: song.id
-    }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h2", null, song.title), /*#__PURE__*/_react.default.createElement("h4", null, song.artist)));
+    }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h2", {
+      className: "style-song-title"
+    }, song.title), /*#__PURE__*/_react.default.createElement("h4", null, song.artist)));
   })));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../context/songContext":"context/songContext.js"}],"components/Styles.js":[function(require,module,exports) {
@@ -34591,7 +34654,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63031" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55392" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

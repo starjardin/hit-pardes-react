@@ -5,18 +5,19 @@ import { SongsContext } from "../context/songContext"
 export default function StyleName() {
   const { styleName } = useParams()
   const { allSongs } = useContext(SongsContext)
+
   const songsFilterdByStyle = allSongs.filter(song => (
     song.style.toLowerCase() === styleName.toLowerCase()
   ))
   
   return (
-    <div>
-      <h3>{styleName}</h3>
+    <div className="style-container">
+      <h3 className="style-header"> 🎧{styleName}</h3>
       <ul>
         {songsFilterdByStyle.map(song => (
           <Link to={`/song/${song.id}`} key={song.id}>
             <li>
-              <h2>{song.title}</h2>
+              <h2 className="style-song-title">{song.title}</h2>
               <h4>{song.artist}</h4>
             </li>
           </Link>

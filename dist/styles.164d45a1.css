@@ -2,6 +2,60 @@ body {
   font-family: "Poppins";
 }
 
+a {
+  text-decoration: none;
+  color: #111111;
+  font-size: 23px;
+}
+
+.styles a {
+  display: inline-block;
+  margin-block: 0.5rem;
+  padding-inline: 1rem;
+}
+
+.style-container li {
+  background-color: #272343;
+  padding-inline: 2rem;
+  padding-block: 2rem;
+  list-style: none;
+  color: #ffffff;
+  margin: 1rem;
+}
+.style-container li h2 {
+  font-size: 26px;
+  font-weight: normal;
+}
+.style-container li h4 {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.style-container .style-song-title, h4 {
+  margin: 0;
+}
+
+.styles a:hover {
+  box-shadow: 1px 1px 1px 1px #cccccc;
+}
+
+.style-header {
+  text-transform: capitalize;
+  font-size: 36px;
+  margin: 0;
+  padding-inline-start: 1rem;
+}
+
+.header-container h3 {
+  font-weight: 300;
+}
+.header-container h3:active {
+  font-weight: 700;
+}
+.header-container h3 a:active {
+  font-weight: 700;
+}
+
 .song-container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -54,6 +108,26 @@ img {
 
 input, select, textarea {
   display: block;
+  padding: 0.7rem;
+  margin: 1rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 1px 2px #cccccc;
+  box-sizing: border-box;
+  min-width: 250px;
+}
+
+.addSong button {
+  margin: 1rem;
+  padding-block: 1rem;
+  padding-inline: 2.5rem;
+  background-color: #FFD803;
+  border: none;
+  border-radius: 5px;
+}
+.addSong button button:focus {
+  outline: none;
+  border: 1px solid #cccccc;
 }
 
 ul {

@@ -1,6 +1,7 @@
 const songs = [
   {
       title: "American Girl",
+      addedToCart : false,
       artist: "Tom Petty",
       year: "1977",
       id : 1347538505564516,
@@ -34,6 +35,7 @@ const songs = [
     },
     {
       title: "American Music",
+      addedToCart : false,
       artist: "Violent Femmes",
       year: "1991",
       id : 753850556416,
@@ -76,6 +78,7 @@ const songs = [
     },
     {
       title: "American Pie",
+      addedToCart : false,
       artist: "Don McLean",
       year: "1972",
       id : 538505564676,
@@ -105,6 +108,7 @@ const songs = [
     },
     {
       title: "A Sailor's Christmas",
+      addedToCart : false,
       artist: "Jimmy Buffett",
       year: "1996",
       id : 134753850556445,
@@ -137,6 +141,7 @@ const songs = [
     },
     {
       title: "Badfish",
+      addedToCart : false,
       artist: "Sublime",
       year: "1996",
       id : 347578544564145,
@@ -169,6 +174,7 @@ const songs = [
     },
     {
       title: "Banana Pancakes",
+      addedToCart : false,
       artist: "Jack Johnson",
       year: "2005",
       id : 43564126,
@@ -213,6 +219,7 @@ const songs = [
     },
     {
       title: "Big Parade",
+      addedToCart : false,
       artist: "The Lumineers",
       year: "2012",
       id : 538505542342426,
@@ -246,6 +253,7 @@ const songs = [
     },
     {
       title: "Brown Eyed Girl",
+      addedToCart : false,
       artist: "Van Morrison",
       year: "1967",
       id : 352316343,
@@ -291,6 +299,7 @@ const songs = [
     },
     {
       title: "Cape Canaveral",
+      addedToCart : false,
       artist: "Conor Oberst",
       year: "2008",
       id : 8545523452463423,

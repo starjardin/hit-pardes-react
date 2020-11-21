@@ -10,13 +10,12 @@ import { SongsContext } from '../context/songContext'
 export default function SongsLists({song}) {
   const { 
     funcUnlikeSongs,
-    songIsAddedToCart,
     funcLikeSongs,
     addToCart,
     toggleFavorite
   } = useContext(SongsContext)
   
-  const cartSource = songIsAddedToCart ? fullShoppingChart : shoppingChart
+  const cartSource = song.addedToCart ? fullShoppingChart : shoppingChart
   const heartSource = song.favorite ? heart : fullHeart
 
   return (
@@ -39,7 +38,7 @@ export default function SongsLists({song}) {
       </p>
       <img 
         src={cartSource} 
-        onClick={() => addToCart(song)} 
+        onClick={() => addToCart(song.id)} 
         alt="shopping-chart" 
         className="shopping-cart"
       />

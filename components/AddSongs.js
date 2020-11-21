@@ -1,28 +1,56 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { SongsContext } from "../context/songContext"
 
 export default function AddSongs() {
+  const { allSongs, setAllSongs } = useContext(SongsContext)
   const [newSongs, setNewSongs] = useState({})
+
+  const songs = allSongs.map(song => song.style)
+  const allStyles = [...new Set (songs)]
+
   function handleSubmit (e) {
     e.preventDefault()
-    const { name, value } = e.target
-    console.log(e.target);
+    const { title, artist, price, lyrics , style} = e.target
+    if (
+      title.value.trim() === "" 
+      && artist.value.trim() === ""
+      && lyrics.value === ""
+    ) return
+    if (lyrics.value.trim().length > 50) return
     setNewSongs({
-      [name] : value
+      title : title.value,
+      artist : artist.value,
+      like : 0,
+      unlike : 0,
+      year : "",
+      id : Date.now(),
+      style : style.value,
+      duration : "",
+      favorite : false,
+      price : price.value,
+      lyrics : lyrics.value,
+      addedToCart : false
     })
+    e.target.reset()
   }
-  console.log(newSongs);
+
+  useEffect (() => {
+    if (!newSongs.title) return null
+    setAllSongs(prevSongs => [...prevSongs, newSongs])
+  }, [newSongs])
+
   return (
-    <form action="#" onSubmit={handleSubmit}>
-      <input name="title" placeholder="Title"/>
-      <input name="artist" placeholder="Artist"/>
-      <input name="price" placeholder="Price"/>
-      <select>
-        <option></option>
-        <option></option>
-        <option></option>
-        <option></option>
+    <form action="#" onSubmit={handleSubmit} className="addSong">
+      <input type="text" name="title" placeholder="Title" required />
+      <input type="text" name="artist" placeholder="Artist" required />
+      <input type="number" name="price" placeholder="Price" required />
+      <input type="date" name="date" placeholder="Date" required />
+      <select className="select" name="style">
+        {allStyles.map((style, index) => {
+          return <option key={index}  value={style}>{style}</option>
+        })}
       </select>
-      <textarea name="lyrics" placeholder="Lyrics"/>
+      <textarea name="lyrics" placeholder="Lyrics" required />
       <button className="btn-submit">add</button>
     </form>
   )

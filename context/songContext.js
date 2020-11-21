@@ -6,16 +6,7 @@ function SongsContextProvider ({children}) {
   const [ allSongs, setAllSongs ] = useState([])
   const [ sortedSongs, setSortedSongs ] = useState([])
   const [ cartItems, setCartItems ] = useState([])
-  const [ songIsAddedToCart, setSonIsAddedToCart] = useState(false)
 
-  function likeSong () {
-    setLike(prev => prev + 1)
-  }
-
-  function unlikeSong () {
-    setUnlike(prev => prev + 1)
-  }
-  
   useEffect (() => {
     setAllSongs(songs)
   }, [])
@@ -28,9 +19,22 @@ function SongsContextProvider ({children}) {
     }))
   }, [allSongs])
 
-  function addToCart (newSongs) {
-    setCartItems(prevSongs => [...prevSongs, newSongs])
+  function addToCart (songId) {
+    const added = allSongs.map(song => {
+      if (song.id === songId) {
+        return {
+          ...song,
+          addedToCart : !song.addedToCart
+        }
+      }
+      return song
+    })
+    setAllSongs(added)
   }
+
+  useEffect (() => {
+  setCartItems(allSongs.filter(song => song.addedToCart))
+  }, [allSongs])
 
   function toggleFavorite (songId) {
     const favoriteSongs = allSongs.map(song => {
@@ -77,7 +81,7 @@ function SongsContextProvider ({children}) {
     <SongsContext.Provider
       value={{
         allSongs, sortedSongs,
-        setAllSongs, likeSong, cartItems, songIsAddedToCart, addToCart, toggleFavorite, funcLikeSongs, funcUnlikeSongs
+        setAllSongs, cartItems, addToCart, toggleFavorite, funcLikeSongs, funcUnlikeSongs
       }}
     >
       {children}
