@@ -34,6 +34,8 @@ function SongsContextProvider ({children}) {
 
   function removeSongsFromCart (songId) {
     setCartItems(cartItems.filter(song => song.id !== songId))
+    const removedSongs = cartItems.find(song => song.id === songId)
+    removedSongs.addedToCart = false
   }
 
   useEffect (() => {

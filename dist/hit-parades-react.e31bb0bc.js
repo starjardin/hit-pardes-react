@@ -34060,6 +34060,10 @@ function SongsContextProvider(_ref) {
     setCartItems(cartItems.filter(function (song) {
       return song.id !== songId;
     }));
+    var removedSongs = cartItems.find(function (song) {
+      return song.id === songId;
+    });
+    removedSongs.addedToCart = false;
   }
 
   (0, _react.useEffect)(function () {
