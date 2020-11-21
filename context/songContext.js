@@ -32,6 +32,10 @@ function SongsContextProvider ({children}) {
     setAllSongs(added)
   }
 
+  function removeSongsFromCart (songId) {
+    setCartItems(cartItems.filter(song => song.id !== songId))
+  }
+
   useEffect (() => {
   setCartItems(allSongs.filter(song => song.addedToCart))
   }, [allSongs])
@@ -81,7 +85,7 @@ function SongsContextProvider ({children}) {
     <SongsContext.Provider
       value={{
         allSongs, sortedSongs,
-        setAllSongs, cartItems, addToCart, toggleFavorite, funcLikeSongs, funcUnlikeSongs
+        setAllSongs, cartItems, addToCart, toggleFavorite, funcLikeSongs, funcUnlikeSongs, removeSongsFromCart
       }}
     >
       {children}

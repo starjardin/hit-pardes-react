@@ -16,7 +16,12 @@ export default function AddSongs() {
       && artist.value.trim() === ""
       && lyrics.value === ""
     ) return
-    if (lyrics.value.trim().length > 50) return
+    if (lyrics.value.trim().length < 50) {
+      const textarea = document.querySelector("textarea")
+      textarea.classList.add("error")
+      return
+    }
+      
     setNewSongs({
       title : title.value,
       artist : artist.value,
@@ -31,6 +36,8 @@ export default function AddSongs() {
       lyrics : lyrics.value,
       addedToCart : false
     })
+    // const textarea = document.querySelector("textarea")
+    // textarea.classList.remove("error")
     e.target.reset()
   }
 
@@ -50,7 +57,8 @@ export default function AddSongs() {
           return <option key={index}  value={style}>{style}</option>
         })}
       </select>
-      <textarea name="lyrics" placeholder="Lyrics" required />
+      <textarea name="lyrics" placeholder="Lyrics" required id="lyrics"/>
+      <label htmlFor="lyrics">Enter more than fifty character digits</label>
       <button className="btn-submit">add</button>
     </form>
   )

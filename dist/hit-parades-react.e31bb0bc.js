@@ -34056,6 +34056,12 @@ function SongsContextProvider(_ref) {
     setAllSongs(added);
   }
 
+  function removeSongsFromCart(songId) {
+    setCartItems(cartItems.filter(function (song) {
+      return song.id !== songId;
+    }));
+  }
+
   (0, _react.useEffect)(function () {
     setCartItems(allSongs.filter(function (song) {
       return song.addedToCart;
@@ -34111,7 +34117,8 @@ function SongsContextProvider(_ref) {
       addToCart: addToCart,
       toggleFavorite: toggleFavorite,
       funcLikeSongs: funcLikeSongs,
-      funcUnlikeSongs: funcUnlikeSongs
+      funcUnlikeSongs: funcUnlikeSongs,
+      removeSongsFromCart: removeSongsFromCart
     }
   }, children);
 }
@@ -34176,7 +34183,13 @@ function AddSongs() {
         lyrics = _e$target.lyrics,
         style = _e$target.style;
     if (title.value.trim() === "" && artist.value.trim() === "" && lyrics.value === "") return;
-    if (lyrics.value.trim().length > 50) return;
+
+    if (lyrics.value.trim().length < 50) {
+      var textarea = document.querySelector("textarea");
+      textarea.classList.add("error");
+      return;
+    }
+
     setNewSongs({
       title: title.value,
       artist: artist.value,
@@ -34190,7 +34203,9 @@ function AddSongs() {
       price: price.value,
       lyrics: lyrics.value,
       addedToCart: false
-    });
+    }); // const textarea = document.querySelector("textarea")
+    // textarea.classList.remove("error")
+
     e.target.reset();
   }
 
@@ -34235,8 +34250,11 @@ function AddSongs() {
   })), /*#__PURE__*/_react.default.createElement("textarea", {
     name: "lyrics",
     placeholder: "Lyrics",
-    required: true
-  }), /*#__PURE__*/_react.default.createElement("button", {
+    required: true,
+    id: "lyrics"
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "lyrics"
+  }, "Enter more than fifty character digits"), /*#__PURE__*/_react.default.createElement("button", {
     className: "btn-submit"
   }, "add"));
 }
@@ -34262,23 +34280,58 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function Cart() {
   var _useContext = (0, _react.useContext)(_songContext.SongsContext),
-      cartItems = _useContext.cartItems;
+      cartItems = _useContext.cartItems,
+      removeSongsFromCart = _useContext.removeSongsFromCart;
+
+  var _useState = (0, _react.useState)("By Now"),
+      _useState2 = _slicedToArray(_useState, 2),
+      buttonTextContent = _useState2[0],
+      setButtonTextContet = _useState2[1];
 
   var totalPrice = cartItems.reduce(function (acc, song) {
     return acc + song.price;
   }, 0);
+
+  function bySongs() {
+    setTimeout(function () {
+      setButtonTextContet("Buying.....");
+    }, 5000);
+    setButtonTextContet("Buy Now");
+  }
+
   var cartItemsElements = cartItems.map(function (song, index) {
     return /*#__PURE__*/_react.default.createElement("li", {
       className: "cart-songs",
       key: index
     }, /*#__PURE__*/_react.default.createElement("img", {
       src: _trash.default,
-      alt: "trash"
-    }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, song.title), /*#__PURE__*/_react.default.createElement("h5", null, song.artist)), /*#__PURE__*/_react.default.createElement("p", null, "$", song.price));
+      alt: "trash",
+      onClick: function onClick() {
+        return removeSongsFromCart(song.id);
+      },
+      className: "trash"
+    }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, song.title), /*#__PURE__*/_react.default.createElement("h5", null, song.artist)), /*#__PURE__*/_react.default.createElement("p", null, "URO ", song.price));
   });
-  return /*#__PURE__*/_react.default.createElement("div", null, cartItemsElements, cartItemsElements.length > 0 && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", null, "By Now"), /*#__PURE__*/_react.default.createElement("p", null, totalPrice.toLocaleString("en-US", {
+  return /*#__PURE__*/_react.default.createElement("div", null, cartItemsElements, cartItemsElements.length > 0 && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+    className: "buy",
+    onClick: bySongs
+  }, buttonTextContent), /*#__PURE__*/_react.default.createElement("p", {
+    className: "total-price"
+  }, "Total price : ", totalPrice.toLocaleString("en-US", {
     style: "currency",
     currency: "URO"
   }))));
@@ -34346,7 +34399,6 @@ function Lyrics() {
   var songWithLyrics = allSongs.find(function (song) {
     return song.id === Number(songId);
   });
-  console.log(songWithLyrics);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Lyrics"), /*#__PURE__*/_react.default.createElement("p", {
     className: "lyrics"
   }, songWithLyrics.lyrics));

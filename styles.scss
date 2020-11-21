@@ -122,19 +122,23 @@ input,select, textarea {
   min-width: 250px;
 }
 
-.addSong {
-  button {
-    margin: 1rem;
-    padding-block: 1rem;
-    padding-inline : 2.5rem;
-    background-color: #FFD803;
-    border: none;
-    border-radius: 5px;
-    button:focus {
-      outline: none;
-      border: 1px solid #cccccc;
-    }
-  }
+.btn-submit, .buy {
+  margin: 1rem;
+  padding-block: 1rem;
+  padding-inline : 2.5rem;
+  background-color: #FFD803;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-submit:focus, .buy:focus {
+  outline: none;
+  border: 1px solid #cccccc;
+}
+
+.total-price {
+  font-size: 36px;
+  font-weight: 700;
 }
 
 ul {
@@ -143,6 +147,23 @@ ul {
 
 .shopping-cart, .favorite {
   cursor: pointer;
+}
+
+.trash {
+  cursor: pointer;
+}
+
+[for="lyrics"] {
+  display: none;
+}
+
+.error {
+  border: 1px solid red;
+}
+
+.error ~ label {
+  display: block;
+  color: red;
 }
 
 .cart-songs {

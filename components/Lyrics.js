@@ -7,7 +7,6 @@ export default function Lyrics() {
   const { allSongs } = useContext(SongsContext)
 
   const songWithLyrics = allSongs.find(song => song.id === Number(songId))
-  console.log(songWithLyrics);
   
   return (
     <div>
