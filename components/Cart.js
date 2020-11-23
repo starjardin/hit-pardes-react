@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { SongsContext } from "../context/songContext"
 import trash from '../assets/trash.svg'
+import { Link } from 'react-router-dom'
 export default function Cart() {
-  const { cartItems, removeSongsFromCart } = useContext(SongsContext)
+  const { cartItems, removeSongsFromCart, emptyCart } = useContext(SongsContext)
   const [ buttonTextContent, setButtonTextContet ] = useState("By Now")
 
   const totalPrice = cartItems.reduce((acc,song) => {
@@ -11,9 +12,10 @@ export default function Cart() {
 
   function bySongs () {
     setTimeout(() => {
-      setButtonTextContet("Buying.....")
+      setButtonTextContet("Buy Now")
+      emptyCart()
     }, 5000)
-    setButtonTextContet("Buy Now")
+    setButtonTextContet("Buying.....")
   }
 
   const cartItemsElements = cartItems.map((song, index) => {
@@ -32,15 +34,22 @@ export default function Cart() {
     </li>)
   })
   
+  const buyButton = cartItemsElements.length > 0
+        ? <div>
+            <button className="buy" onClick={bySongs}>{buttonTextContent}</button>
+            <p className="total-price">Total price : {totalPrice.toLocaleString("en-US", {style: "currency", currency: "URO"})}</p>
+          </div>
+        : <div>
+            <h3>Add Songs to buy here</h3>
+            <Link to="/">
+              <button>Click me to add songs</button>
+            </Link>
+          </div>
+
   return (
     <div>
       {cartItemsElements}
-      {cartItemsElements.length > 0 &&
-          <div>
-            <button className="buy" onClick={bySongs}>{buttonTextContent}</button>
-            <p className="total-price">Total price : {totalPrice.toLocaleString("en-US", {style: "currency", currency: "URO"})}</p>
-        </div>
-      }
+      {buyButton}
     </div>
   )
 }

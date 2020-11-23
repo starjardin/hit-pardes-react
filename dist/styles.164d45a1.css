@@ -1,5 +1,15 @@
 body {
   font-family: "Poppins";
+  max-width: 1040px;
+  margin: auto;
+  padding: 1rem;
+  background-color: #fcfcfc;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  line-height: 46px;
 }
 
 a {
@@ -31,7 +41,8 @@ a {
   font-weight: normal;
 }
 
-.style-container .style-song-title, h4 {
+.style-container .style-song-title,
+h4 {
   margin: 0;
 }
 
@@ -71,11 +82,13 @@ a {
 .song-title {
   grid-column: 2/4;
 }
-.song-title h2, .song-title p {
+.song-title h2,
+.song-title p {
   margin: 0;
 }
 
-.like, .unlike {
+.like,
+.unlike {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -106,7 +119,9 @@ img {
   text-transform: capitalize;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   display: block;
   padding: 0.7rem;
   margin: 1rem;
@@ -117,16 +132,18 @@ input, select, textarea {
   min-width: 250px;
 }
 
-.btn-submit, .buy {
+.btn-submit,
+.buy {
   margin: 1rem;
   padding-block: 1rem;
   padding-inline: 2.5rem;
-  background-color: #FFD803;
+  background-color: #ffd803;
   border: none;
   border-radius: 5px;
 }
 
-.btn-submit:focus, .buy:focus {
+.btn-submit:focus,
+.buy:focus {
   outline: none;
   border: 1px solid #cccccc;
 }
@@ -140,7 +157,8 @@ ul {
   padding: 0;
 }
 
-.shopping-cart, .favorite {
+.shopping-cart,
+.favorite {
   cursor: pointer;
 }
 

@@ -39,8 +39,12 @@ function SongsContextProvider ({children}) {
   }
 
   useEffect (() => {
-  setCartItems(allSongs.filter(song => song.addedToCart))
+    setCartItems(allSongs.filter(song => song.addedToCart))
   }, [allSongs])
+
+  function emptyCart () {
+    setCartItems([])
+  }
 
   function toggleFavorite (songId) {
     const favoriteSongs = allSongs.map(song => {
@@ -87,7 +91,7 @@ function SongsContextProvider ({children}) {
     <SongsContext.Provider
       value={{
         allSongs, sortedSongs,
-        setAllSongs, cartItems, addToCart, toggleFavorite, funcLikeSongs, funcUnlikeSongs, removeSongsFromCart
+        setAllSongs, cartItems, addToCart, toggleFavorite, funcLikeSongs, funcUnlikeSongs, removeSongsFromCart, emptyCart
       }}
     >
       {children}

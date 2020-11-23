@@ -46,13 +46,13 @@ const songs = [
       favorite : "fasle",
       price : 44,
       style : "hip-hop",
-      lyrics : `Do you like American music
-                I like American music
-                Don't you like American music baby
-                I want you to hold me
-                I want your arms around me
-                I want you to hold me baby
-                Did you do too many drugs
+      lyrics : `Do you like American music ~
+                I like American music ~
+                Don't you like American music baby ~
+                I want you to hold me ~
+                I want your arms around me ~
+                I want you to hold me baby ~
+                Did you do too many drugs ~
 
                 I did too many drugs
                 Did you do too many drugs too baby

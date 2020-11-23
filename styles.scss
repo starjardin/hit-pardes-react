@@ -1,22 +1,32 @@
-body {font-family: "Poppins";
+body {
+  font-family: "Poppins";
+  max-width: 1040px;
+  margin: auto;
+  padding: 1rem;
+  background-color: #fcfcfc;
+}
 
+h1 {
+    text-align: center;
+    font-size: 36px;
+    line-height: 46px;
 }
 
 a {
-    text-decoration: none;
-    color: #111111;
-    font-size: 23px;
+  text-decoration: none;
+  color: #111111;
+  font-size: 23px;
 }
 
 .styles a {
   display: inline-block;
-  margin-block: .5rem;
+  margin-block: 0.5rem;
   padding-inline: 1rem;
 }
 
 .style-container {
   li {
-  background-color: #272343;
+    background-color: #272343;
     padding-inline: 2rem;
     padding-block: 2rem;
     list-style: none;
@@ -26,14 +36,15 @@ a {
       font-size: 26px;
       font-weight: normal;
     }
-  h4 {
+    h4 {
       font-size: 16px;
       font-weight: normal;
-  }
+    }
   }
 }
 
-.style-container  .style-song-title,  h4 {
+.style-container .style-song-title,
+h4 {
   margin: 0;
 }
 
@@ -75,16 +86,18 @@ a {
 
 .song-title {
   grid-column: 2/4;
-  h2, p {
+  h2,
+  p {
     margin: 0;
   }
 }
 
-.like, .unlike {
+.like,
+.unlike {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
-  padding-block: .3rem;
+  padding-block: 0.3rem;
   cursor: pointer;
 }
 
@@ -111,9 +124,11 @@ img {
   text-transform: capitalize;
 }
 
-input,select, textarea {
+input,
+select,
+textarea {
   display: block;
-  padding: .7rem;
+  padding: 0.7rem;
   margin: 1rem;
   border-radius: 5px;
   border: none;
@@ -122,16 +137,18 @@ input,select, textarea {
   min-width: 250px;
 }
 
-.btn-submit, .buy {
+.btn-submit,
+.buy {
   margin: 1rem;
   padding-block: 1rem;
-  padding-inline : 2.5rem;
-  background-color: #FFD803;
+  padding-inline: 2.5rem;
+  background-color: #ffd803;
   border: none;
   border-radius: 5px;
 }
 
-.btn-submit:focus, .buy:focus {
+.btn-submit:focus,
+.buy:focus {
   outline: none;
   border: 1px solid #cccccc;
 }
@@ -145,7 +162,8 @@ ul {
   padding: 0;
 }
 
-.shopping-cart, .favorite {
+.shopping-cart,
+.favorite {
   cursor: pointer;
 }
 

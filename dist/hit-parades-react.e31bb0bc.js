@@ -33889,7 +33889,7 @@ var songs = [(_ref = {
   unlike: 20,
   favorite: "fasle",
   price: 44
-}, _defineProperty(_ref2, "style", "hip-hop"), _defineProperty(_ref2, "lyrics", "Do you like American music\n                I like American music\n                Don't you like American music baby\n                I want you to hold me\n                I want your arms around me\n                I want you to hold me baby\n                Did you do too many drugs\n\n                I did too many drugs\n                Did you do too many drugs too baby\n                You were born too late\n                I was born too soon\n                But every time I look at that ugly moon\n                It reminds me of you\n                It reminds me of you ooh ooh ooh\n                I need a date to the prom\n                Would you like to come along\n                But nobody would go to the prom with me baby\n\n                They didn't like American music\n                They never heard American music\n                They didn't know the music was in my soul baby\n                You were born too soon\n                I was born too late\n                But every time I look at that ugly lake\n                It reminds me of me\n                It reminds me of me\n                Do you like American music\n                We like\u2026"), _ref2), (_ref3 = {
+}, _defineProperty(_ref2, "style", "hip-hop"), _defineProperty(_ref2, "lyrics", "Do you like American music ~\n                I like American music ~\n                Don't you like American music baby ~\n                I want you to hold me ~\n                I want your arms around me ~\n                I want you to hold me baby ~\n                Did you do too many drugs ~\n\n                I did too many drugs\n                Did you do too many drugs too baby\n                You were born too late\n                I was born too soon\n                But every time I look at that ugly moon\n                It reminds me of you\n                It reminds me of you ooh ooh ooh\n                I need a date to the prom\n                Would you like to come along\n                But nobody would go to the prom with me baby\n\n                They didn't like American music\n                They never heard American music\n                They didn't know the music was in my soul baby\n                You were born too soon\n                I was born too late\n                But every time I look at that ugly lake\n                It reminds me of me\n                It reminds me of me\n                Do you like American music\n                We like\u2026"), _ref2), (_ref3 = {
   title: "American Pie",
   addedToCart: false,
   artist: "Don McLean",
@@ -34072,6 +34072,10 @@ function SongsContextProvider(_ref) {
     }));
   }, [allSongs]);
 
+  function emptyCart() {
+    setCartItems([]);
+  }
+
   function toggleFavorite(songId) {
     var favoriteSongs = allSongs.map(function (song) {
       if (song.id === songId) {
@@ -34122,7 +34126,8 @@ function SongsContextProvider(_ref) {
       toggleFavorite: toggleFavorite,
       funcLikeSongs: funcLikeSongs,
       funcUnlikeSongs: funcUnlikeSongs,
-      removeSongsFromCart: removeSongsFromCart
+      removeSongsFromCart: removeSongsFromCart,
+      emptyCart: emptyCart
     }
   }, children);
 }
@@ -34278,6 +34283,8 @@ var _songContext = require("../context/songContext");
 
 var _trash = _interopRequireDefault(require("../assets/trash.svg"));
 
+var _reactRouterDom = require("react-router-dom");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -34299,7 +34306,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Cart() {
   var _useContext = (0, _react.useContext)(_songContext.SongsContext),
       cartItems = _useContext.cartItems,
-      removeSongsFromCart = _useContext.removeSongsFromCart;
+      removeSongsFromCart = _useContext.removeSongsFromCart,
+      emptyCart = _useContext.emptyCart;
 
   var _useState = (0, _react.useState)("By Now"),
       _useState2 = _slicedToArray(_useState, 2),
@@ -34312,9 +34320,10 @@ function Cart() {
 
   function bySongs() {
     setTimeout(function () {
-      setButtonTextContet("Buying.....");
+      setButtonTextContet("Buy Now");
+      emptyCart();
     }, 5000);
-    setButtonTextContet("Buy Now");
+    setButtonTextContet("Buying.....");
   }
 
   var cartItemsElements = cartItems.map(function (song, index) {
@@ -34330,7 +34339,7 @@ function Cart() {
       className: "trash"
     }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, song.title), /*#__PURE__*/_react.default.createElement("h5", null, song.artist)), /*#__PURE__*/_react.default.createElement("p", null, "URO ", song.price));
   });
-  return /*#__PURE__*/_react.default.createElement("div", null, cartItemsElements, cartItemsElements.length > 0 && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  var buyButton = cartItemsElements.length > 0 ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
     className: "buy",
     onClick: bySongs
   }, buttonTextContent), /*#__PURE__*/_react.default.createElement("p", {
@@ -34338,9 +34347,12 @@ function Cart() {
   }, "Total price : ", totalPrice.toLocaleString("en-US", {
     style: "currency",
     currency: "URO"
-  }))));
+  }))) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Add Songs to buy here"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/"
+  }, /*#__PURE__*/_react.default.createElement("button", null, "Click me to add songs")));
+  return /*#__PURE__*/_react.default.createElement("div", null, cartItemsElements, buyButton);
 }
-},{"react":"node_modules/react/index.js","../context/songContext":"context/songContext.js","../assets/trash.svg":"assets/trash.svg"}],"components/Header.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context/songContext":"context/songContext.js","../assets/trash.svg":"assets/trash.svg","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"components/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34403,10 +34415,12 @@ function Lyrics() {
   var songWithLyrics = allSongs.find(function (song) {
     return song.id === Number(songId);
   });
+  var brk = songWithLyrics.lyrics.split(" ~ ").join("<br>");
+  var res = brk.replace("~", "<br />");
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Lyrics"), /*#__PURE__*/_react.default.createElement("p", {
     className: "lyrics"
-  }, songWithLyrics.lyrics));
-}
+  }, res));
+} //https://www.tutorialspoint.com/How-to-use-a-line-break-in-array-values-in-JavaScript#:~:text=To%20add%20a%20line%20break%20in%20array%20values%20for%20every,%3E%20for%20each%20occurrence%20of%20~.
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../context/songContext":"context/songContext.js"}],"assets/dots-horizontal.svg":[function(require,module,exports) {
 module.exports = "/dots-horizontal.0ab3cdff.svg";
 },{}],"assets/heart.svg":[function(require,module,exports) {
@@ -34710,7 +34724,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55392" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53351" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
