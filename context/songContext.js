@@ -20,6 +20,10 @@ function SongsContextProvider ({children}) {
     localStorage.setItem("allSongs", JSON.stringify(allSongs))
   }, [allSongs])
 
+  useEffect (() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems))
+  }, [cartItems])
+  
   useEffect(() => {
     setSortedSongs(allSongs.sort((a, b) => {
       const like = a.like - a.unlike

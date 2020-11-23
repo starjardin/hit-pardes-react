@@ -34045,6 +34045,9 @@ function SongsContextProvider(_ref) {
     localStorage.setItem("allSongs", JSON.stringify(allSongs));
   }, [allSongs]);
   (0, _react.useEffect)(function () {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+  (0, _react.useEffect)(function () {
     setSortedSongs(allSongs.sort(function (a, b) {
       var like = a.like - a.unlike;
       var unlike = b.like - b.unlike;
@@ -34376,7 +34379,7 @@ var _reactRouterDom = require("react-router-dom");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Header() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "Hit parades 2021"), /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "\uD83D\uDD25 Hit Parades, Best Musics 2021 \uD83D\uDD25"), /*#__PURE__*/_react.default.createElement("div", {
     className: "header-container"
   }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/"
