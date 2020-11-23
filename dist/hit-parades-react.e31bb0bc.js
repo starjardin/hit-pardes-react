@@ -34033,8 +34033,17 @@ function SongsContextProvider(_ref) {
       setCartItems = _useState6[1];
 
   (0, _react.useEffect)(function () {
-    setAllSongs(_songs.default);
+    var storedSongs = JSON.parse(localStorage.getItem("allSongs"));
+
+    if (storedSongs.length > 0) {
+      setAllSongs(storedSongs);
+    } else {
+      setAllSongs(_songs.default);
+    }
   }, []);
+  (0, _react.useEffect)(function () {
+    localStorage.setItem("allSongs", JSON.stringify(allSongs));
+  }, [allSongs]);
   (0, _react.useEffect)(function () {
     setSortedSongs(allSongs.sort(function (a, b) {
       var like = a.like - a.unlike;

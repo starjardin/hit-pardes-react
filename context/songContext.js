@@ -8,8 +8,17 @@ function SongsContextProvider ({children}) {
   const [ cartItems, setCartItems ] = useState([])
 
   useEffect (() => {
-    setAllSongs(songs)
+    const storedSongs = JSON.parse(localStorage.getItem("allSongs"))
+    if (storedSongs.length > 0) {
+      setAllSongs(storedSongs)
+    } else {
+      setAllSongs(songs)
+    }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem("allSongs", JSON.stringify(allSongs))
+  }, [allSongs])
 
   useEffect(() => {
     setSortedSongs(allSongs.sort((a, b) => {
