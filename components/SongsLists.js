@@ -11,12 +11,23 @@ export default function SongsLists({song}) {
   const { 
     funcUnlikeSongs,
     funcLikeSongs,
-    addToCart,
-    toggleFavorite
+    toggleFavorite,
+    addItemsToCart,
+    cartItems
   } = useContext(SongsContext)
-  
-  const cartSource = song.addedToCart ? fullShoppingChart : shoppingChart
+
   const heartSource = song.favorite ? heart : fullHeart
+
+  function showCart (songId) {
+    const isAlreadyInCart = cartItems.some(song => song.id === songId)
+    console.log(isAlreadyInCart);
+    if (isAlreadyInCart) {
+      return <img src={fullShoppingChart} alt="full-shopping-chart" className="shopping-cart"
+      />
+    } else {
+      return <img src={shoppingChart} alt="shopping-chart" className="shopping-cart" />
+    }
+  }
 
   return (
     <li className="song-container">
@@ -36,12 +47,9 @@ export default function SongsLists({song}) {
       <p className="unlike" onClick={() => funcUnlikeSongs(song.id)}>
         {song.unlike}
       </p>
-      <img 
-        src={cartSource} 
-        onClick={() => addToCart(song.id)} 
-        alt="shopping-chart" 
-        className="shopping-cart"
-      />
+      <div onClick={() => addItemsToCart(song)}>
+        {showCart(song.id)}
+      </div>
       <Link to={`/song/${song.id}`} key={song.id}>
         <img src={dotsHorizontal} alt="dots" />
       </Link>      

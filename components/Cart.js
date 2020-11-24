@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { SongsContext } from "../context/songContext"
 import trash from '../assets/trash.svg'
 import { Link } from 'react-router-dom'
+
 export default function Cart() {
   const { cartItems, removeSongsFromCart, emptyCart } = useContext(SongsContext)
   const [ buttonTextContent, setButtonTextContet ] = useState("By Now")

@@ -9,7 +9,7 @@ function SongsContextProvider ({children}) {
 
   useEffect (() => {
     const storedSongs = JSON.parse(localStorage.getItem("allSongs"))
-    if (storedSongs.length > 0) {
+    if (storedSongs.length) {
       setAllSongs(storedSongs)
     } else {
       setAllSongs(songs)
@@ -32,28 +32,13 @@ function SongsContextProvider ({children}) {
     }))
   }, [allSongs])
 
-  function addToCart (songId) {
-    const added = allSongs.map(song => {
-      if (song.id === songId) {
-        return {
-          ...song,
-          addedToCart : !song.addedToCart
-        }
-      }
-      return song
-    })
-    setAllSongs(added)
+  function addItemsToCart (newSong) {
+    setCartItems(prev => [...prev, newSong])
   }
 
   function removeSongsFromCart (songId) {
     setCartItems(cartItems.filter(song => song.id !== songId))
-    const removedSongs = cartItems.find(song => song.id === songId)
-    removedSongs.addedToCart = false
   }
-
-  useEffect (() => {
-    setCartItems(allSongs.filter(song => song.addedToCart))
-  }, [allSongs])
 
   function emptyCart () {
     setCartItems([])
@@ -104,7 +89,7 @@ function SongsContextProvider ({children}) {
     <SongsContext.Provider
       value={{
         allSongs, sortedSongs,
-        setAllSongs, cartItems, addToCart, toggleFavorite, funcLikeSongs, funcUnlikeSongs, removeSongsFromCart, emptyCart
+        setAllSongs, cartItems, toggleFavorite, funcLikeSongs, funcUnlikeSongs, removeSongsFromCart, emptyCart, addItemsToCart
       }}
     >
       {children}

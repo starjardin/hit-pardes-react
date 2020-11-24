@@ -33998,6 +33998,14 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -34035,7 +34043,7 @@ function SongsContextProvider(_ref) {
   (0, _react.useEffect)(function () {
     var storedSongs = JSON.parse(localStorage.getItem("allSongs"));
 
-    if (storedSongs.length > 0) {
+    if (storedSongs.length) {
       setAllSongs(storedSongs);
     } else {
       setAllSongs(_songs.default);
@@ -34055,34 +34063,17 @@ function SongsContextProvider(_ref) {
     }));
   }, [allSongs]);
 
-  function addToCart(songId) {
-    var added = allSongs.map(function (song) {
-      if (song.id === songId) {
-        return _objectSpread(_objectSpread({}, song), {}, {
-          addedToCart: !song.addedToCart
-        });
-      }
-
-      return song;
+  function addItemsToCart(newSong) {
+    setCartItems(function (prev) {
+      return [].concat(_toConsumableArray(prev), [newSong]);
     });
-    setAllSongs(added);
   }
 
   function removeSongsFromCart(songId) {
     setCartItems(cartItems.filter(function (song) {
       return song.id !== songId;
     }));
-    var removedSongs = cartItems.find(function (song) {
-      return song.id === songId;
-    });
-    removedSongs.addedToCart = false;
   }
-
-  (0, _react.useEffect)(function () {
-    setCartItems(allSongs.filter(function (song) {
-      return song.addedToCart;
-    }));
-  }, [allSongs]);
 
   function emptyCart() {
     setCartItems([]);
@@ -34134,12 +34125,12 @@ function SongsContextProvider(_ref) {
       sortedSongs: sortedSongs,
       setAllSongs: setAllSongs,
       cartItems: cartItems,
-      addToCart: addToCart,
       toggleFavorite: toggleFavorite,
       funcLikeSongs: funcLikeSongs,
       funcUnlikeSongs: funcUnlikeSongs,
       removeSongsFromCart: removeSongsFromCart,
-      emptyCart: emptyCart
+      emptyCart: emptyCart,
+      addItemsToCart: addItemsToCart
     }
   }, children);
 }
@@ -34479,11 +34470,33 @@ function SongsLists(_ref) {
   var _useContext = (0, _react.useContext)(_songContext.SongsContext),
       funcUnlikeSongs = _useContext.funcUnlikeSongs,
       funcLikeSongs = _useContext.funcLikeSongs,
-      addToCart = _useContext.addToCart,
-      toggleFavorite = _useContext.toggleFavorite;
+      toggleFavorite = _useContext.toggleFavorite,
+      addItemsToCart = _useContext.addItemsToCart,
+      cartItems = _useContext.cartItems;
 
-  var cartSource = song.addedToCart ? _fullShoppingCart.default : _shoppingCart.default;
   var heartSource = song.favorite ? _heart.default : _fullHeart.default;
+
+  function showCart(songId) {
+    var isAlreadyInCart = cartItems.some(function (song) {
+      return song.id === songId;
+    });
+    console.log(isAlreadyInCart);
+
+    if (isAlreadyInCart) {
+      return /*#__PURE__*/_react.default.createElement("img", {
+        src: _fullShoppingCart.default,
+        alt: "full-shopping-chart",
+        className: "shopping-cart"
+      });
+    } else {
+      return /*#__PURE__*/_react.default.createElement("img", {
+        src: _shoppingCart.default,
+        alt: "shopping-chart",
+        className: "shopping-cart"
+      });
+    }
+  }
+
   return /*#__PURE__*/_react.default.createElement("li", {
     className: "song-container"
   }, /*#__PURE__*/_react.default.createElement("img", {
@@ -34505,14 +34518,11 @@ function SongsLists(_ref) {
     onClick: function onClick() {
       return funcUnlikeSongs(song.id);
     }
-  }, song.unlike), /*#__PURE__*/_react.default.createElement("img", {
-    src: cartSource,
+  }, song.unlike), /*#__PURE__*/_react.default.createElement("div", {
     onClick: function onClick() {
-      return addToCart(song.id);
-    },
-    alt: "shopping-chart",
-    className: "shopping-cart"
-  }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      return addItemsToCart(song);
+    }
+  }, showCart(song.id)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/song/".concat(song.id),
     key: song.id
   }, /*#__PURE__*/_react.default.createElement("img", {
@@ -34736,7 +34746,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53351" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52589" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
