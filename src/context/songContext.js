@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import songs from '../songs.js'
-const SongsContext = React.createContext();
+import React, { useState, useEffect, createContext } from 'react'
+import songs from '../../songs.js'
+const SongsContext = createContext();
 
 function SongsContextProvider ({children}) {
   const [ allSongs, setAllSongs ] = useState([])
@@ -88,8 +88,16 @@ function SongsContextProvider ({children}) {
   return (
     <SongsContext.Provider
       value={{
-        allSongs, sortedSongs,
-        setAllSongs, cartItems, toggleFavorite, funcLikeSongs, funcUnlikeSongs, removeSongsFromCart, emptyCart, addItemsToCart
+        allSongs,
+        sortedSongs,
+        setAllSongs,
+        cartItems,
+        toggleFavorite,
+        funcLikeSongs,
+        funcUnlikeSongs,
+        removeSongsFromCart,
+        emptyCart,
+        addItemsToCart
       }}
     >
       {children}

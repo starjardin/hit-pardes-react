@@ -7,7 +7,7 @@ export default function Header() {
       <h1>🔥 Hit Parades, Best Musics 2021 🔥</h1>
       <div className="header-container" >
         <Link to="/" >
-          <h3 className="header-heading">Pular Songs</h3>
+          <h3 className="header-heading">Popular Songs</h3>
         </Link>
         <Link to="/styles" >
           <h3 className="header-heading">Styles</h3>

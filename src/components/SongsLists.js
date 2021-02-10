@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+
 import  dotsHorizontal from "../assets/dots-horizontal.svg"
 import  heart from "../assets/heart.svg"
 import  fullHeart from "../assets/full-heart.svg"
@@ -20,7 +21,6 @@ export default function SongsLists({song}) {
 
   function showCart (songId) {
     const isAlreadyInCart = cartItems.some(song => song.id === songId)
-    console.log(isAlreadyInCart);
     if (isAlreadyInCart) {
       return <img src={fullShoppingChart} alt="full-shopping-chart" className="shopping-cart"
       />
