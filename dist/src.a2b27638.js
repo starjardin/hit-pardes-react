@@ -38362,11 +38362,11 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Item = exports.Container = void 0;
+exports.SongArtist = exports.SongTitle = exports.Lyrics = exports.Cart = exports.Button = exports.Favourite = exports.Column = exports.Item = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _templateObject, _templateObject2;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38376,9 +38376,37 @@ var Container = _styledComponents.default.ul(_templateObject || (_templateObject
 
 exports.Container = Container;
 
-var Item = _styledComponents.default.li(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  list-style: none;\n"])));
+var Item = _styledComponents.default.li(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  list-style: none;\n  display: flex;\n  justify-content : space-between;\n  align-items: center;\n"])));
 
 exports.Item = Item;
+
+var Column = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  width : 30%;\n  padding-inline : 1rem;\n"])));
+
+exports.Column = Column;
+
+var Favourite = _styledComponents.default.div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral([""])));
+
+exports.Favourite = Favourite;
+
+var Button = _styledComponents.default.button(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral([""])));
+
+exports.Button = Button;
+
+var Cart = _styledComponents.default.div(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral([""])));
+
+exports.Cart = Cart;
+
+var Lyrics = _styledComponents.default.div(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral([""])));
+
+exports.Lyrics = Lyrics;
+
+var SongTitle = _styledComponents.default.h2(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral([""])));
+
+exports.SongTitle = SongTitle;
+
+var SongArtist = _styledComponents.default.p(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral([""])));
+
+exports.SongArtist = SongArtist;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/popularSongs/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -38405,12 +38433,71 @@ var PopularSongs = function PopularSongs(_ref) {
 };
 
 PopularSongs.Item = function PopularSongsItem(_ref2) {
-  var item = _ref2.item,
-      children = _ref2.children,
-      restProps = _objectWithoutProperties(_ref2, ["item", "children"]);
+  var children = _ref2.children,
+      restProps = _objectWithoutProperties(_ref2, ["children"]);
 
-  return _react.default.createElement(_popularSongsStyles.Item, restProps, item.title);
+  return _react.default.createElement(_popularSongsStyles.Item, restProps, children);
 };
+
+PopularSongs.Favourite = function PopularSongsFavourite(_ref3) {
+  var children = _ref3.children,
+      restProps = _objectWithoutProperties(_ref3, ["children"]);
+
+  return _react.default.createElement(_popularSongsStyles.Favourite, restProps, children);
+};
+
+PopularSongs.Column = function PopularSongsColumn(_ref4) {
+  var children = _ref4.children,
+      restProps = _objectWithoutProperties(_ref4, ["children"]);
+
+  return _react.default.createElement(_popularSongsStyles.Column, restProps, children);
+};
+
+PopularSongs.Button = function PopularSongsButton(_ref5) {
+  var children = _ref5.children,
+      restProps = _objectWithoutProperties(_ref5, ["children"]);
+
+  return _react.default.createElement(_popularSongsStyles.Button, restProps, children);
+};
+
+PopularSongs.Cart = function PopularSongsCart(_ref6) {
+  var children = _ref6.children,
+      restProps = _objectWithoutProperties(_ref6, ["children"]);
+
+  return _react.default.createElement(_popularSongsStyles.Cart, restProps, children);
+};
+
+PopularSongs.Lyrics = function PopularSongsLyrics(_ref7) {
+  var children = _ref7.children,
+      restProps = _objectWithoutProperties(_ref7, ["children"]);
+
+  return _react.default.createElement(_popularSongsStyles.Lyrics, restProps, children);
+};
+
+PopularSongs.SongTitle = function PopularSongsSongTitle(_ref8) {
+  var children = _ref8.children,
+      restProps = _objectWithoutProperties(_ref8, ["children"]);
+
+  return _react.default.createElement(_popularSongsStyles.SongTitle, restProps, children);
+};
+
+PopularSongs.SongArtist = function PopularSongsSongArtist(_ref9) {
+  var children = _ref9.children,
+      restProps = _objectWithoutProperties(_ref9, ["children"]);
+
+  return _react.default.createElement(_popularSongsStyles.SongArtist, restProps, children);
+};
+/*
+
+TODO:
+  item>5children
+  1-like div
+  2-title and artist div > 2spans
+  3-button div>buttons
+  4-cart div
+  5-lyrics div
+ */
+
 
 var _default = PopularSongs;
 exports.default = _default;
@@ -38649,18 +38736,16 @@ var PopularSongsContainer = function PopularSongsContainer(_ref) {
   var allSongs = _ref.allSongs;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_HeaderContainer.default, null), _react.default.createElement(_components.PopularSongs, null, allSongs.map(function (item) {
     return _react.default.createElement(_components.PopularSongs.Item, {
-      key: item.id,
-      item: item
-    });
+      key: item.id
+    }, _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Favourite, null)), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.SongTitle, null, item.title), _react.default.createElement(_components.PopularSongs.SongArtist, null, item.artist)), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Button, null, "Up"), _react.default.createElement(_components.PopularSongs.Button, null, "Down")), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Cart, null)), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Lyrics, null, "...")));
   })));
 };
 
-var _default = (0, _reactRedux.connect)(function (_ref2) {
-  var allSongs = _ref2.allSongs;
+var _default = (0, _reactRedux.connect)(function (state) {
   return {
-    allSongs: allSongs
+    allSongs: state.allSongs
   };
-})(PopularSongsContainer);
+}, null)(PopularSongsContainer);
 
 exports.default = _default;
 },{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../components":"src/components/index.js","./HeaderContainer":"src/container/HeaderContainer.js"}],"src/container/stylesContainer.js":[function(require,module,exports) {
