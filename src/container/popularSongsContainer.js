@@ -10,7 +10,11 @@ const PopularSongsContainer = ({ allSongs, likeSong, dislikeSong }) => {
     <>
       <HeaderContianer />
       <PopularSongs>
-        { allSongs.map(item => (
+        { allSongs.sort((a, b) => {
+          const like = a.like - b.unlike
+          const unlike = b.like - a.unlike
+          return unlike - like
+        }).map(item => (
           <PopularSongs.Item key={ item.id }>
             <PopularSongs.Column>
               <PopularSongs.Favourite>

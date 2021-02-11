@@ -38791,7 +38791,11 @@ var PopularSongsContainer = function PopularSongsContainer(_ref) {
   var allSongs = _ref.allSongs,
       likeSong = _ref.likeSong,
       dislikeSong = _ref.dislikeSong;
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_HeaderContainer.default, null), _react.default.createElement(_components.PopularSongs, null, allSongs.map(function (item) {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_HeaderContainer.default, null), _react.default.createElement(_components.PopularSongs, null, allSongs.sort(function (a, b) {
+    var like = a.like - b.unlike;
+    var unlike = b.like - a.unlike;
+    return unlike - like;
+  }).map(function (item) {
     return _react.default.createElement(_components.PopularSongs.Item, {
       key: item.id
     }, _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Favourite, null, item.favorite && "favorited")), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.SongTitle, null, item.title), _react.default.createElement(_components.PopularSongs.SongArtist, null, item.artist)), _react.default.createElement(_components.PopularSongs.Column, {
@@ -38884,6 +38888,18 @@ var _redux = require("redux");
 
 var _actions = require("../actions");
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -38912,7 +38928,7 @@ function allSongs() {
 
           return song;
         });
-        return state = likeSongs;
+        return likeSongs;
       }
 
     case _actions.ACTIONS.dislike:
@@ -38920,13 +38936,18 @@ function allSongs() {
         var unlikeSongs = state.map(function (song) {
           if (song.id === action.id) {
             return _objectSpread(_objectSpread({}, song), {}, {
-              unlike: song.like + 1
+              unlike: song.unlike + 1
             });
           }
 
           return song;
         });
         return unlikeSongs;
+      }
+
+    case _actions.ACTIONS.addSongs:
+      {
+        return [].concat(_toConsumableArray(state), [action.payload]);
       }
 
     default:

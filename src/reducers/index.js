@@ -18,19 +18,22 @@ function allSongs (state = [], action) {
           }
           return song;
       });
-      return state = likeSongs
+      return likeSongs
     }
     case ACTIONS.dislike: {
       const unlikeSongs = state.map(song => {
         if (song.id === action.id) {
           return {
             ...song,
-            unlike: song.like + 1,
+            unlike: song.unlike + 1,
             }
           }
           return song;
       });
       return unlikeSongs
+    }
+    case ACTIONS.addSongs: {
+      return [...state, action.payload]
     }
     default: return state
   }
