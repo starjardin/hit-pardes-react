@@ -6,16 +6,21 @@ export const Container = styled.ul`
 `
 export const Item = styled.li`
   list-style: none;
-  display: flex;
-  justify-content : space-between;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   align-items: center;
+  column-gap: 1rem;
 `
 export const Column = styled.div`
-  width : 30%;
+  display : ${({ display }) => (display)};
   padding-inline : 1rem;
 `
-export const Favourite = styled.div``
-export const Button = styled.button``
+export const Favourite = styled.div`
+  
+`
+export const Button = styled.button`
+  cursor: pointer;
+`
 export const Cart = styled.div``
 export const Lyrics = styled.div``
 export const SongTitle = styled.h2``

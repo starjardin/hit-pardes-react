@@ -2,7 +2,7 @@ const songs = {
   allSongs : [
     {
         title: "American Girl",
-        addedToCart : false,
+        addedToCart : true,
         artist: "Tom Petty",
         year: "1977",
         id : 1347538505564516,
@@ -10,7 +10,7 @@ const songs = {
         duration : "3:34",
         like : 10,
         unlike : 30,
-        favorite : "fasle",
+        favorite : "true",
         price : 34,
         style : "country",
         lyrics : `Well she was an American girl 
@@ -36,7 +36,7 @@ const songs = {
       },
       {
         title: "American Music",
-        addedToCart : false,
+        addedToCart : true,
         artist: "Violent Femmes",
         year: "1991",
         id : 753850556416,
@@ -87,7 +87,7 @@ const songs = {
         duration : "3:34",
         like : 4,
         unlike : 10,
-        favorite : "fasle",
+        favorite : "true",
         price : 23,
         style : "Jazz",
         lyrics : `A long long time ago
@@ -220,7 +220,7 @@ const songs = {
       },
       {
         title: "Big Parade",
-        addedToCart : false,
+        addedToCart : true,
         artist: "The Lumineers",
         year: "2012",
         id : 538505542342426,
@@ -228,7 +228,7 @@ const songs = {
         duration : "3:34",
         like : 3,
         unlike : 3,
-        favorite : "fasle",
+        favorite : "true",
         price : 21,
         style : "rap",
         lyrics : `Lovely girl won't you stay, won't you stay, stay with me

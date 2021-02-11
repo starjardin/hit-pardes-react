@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 
 import { PopularSongs } from '../components'
 import HeaderContianer from './HeaderContainer'
+import { likeSong, dislikeSong } from '../actions'
 
-const PopularSongsContainer = ({ allSongs }) => {
+const PopularSongsContainer = ({ allSongs, likeSong, dislikeSong }) => {
   return (
     <>
       <HeaderContianer />
@@ -12,18 +13,30 @@ const PopularSongsContainer = ({ allSongs }) => {
         { allSongs.map(item => (
           <PopularSongs.Item key={ item.id }>
             <PopularSongs.Column>
-              <PopularSongs.Favourite />
+              <PopularSongs.Favourite>
+                 {item.favorite && "favorited"}
+              </PopularSongs.Favourite>
             </PopularSongs.Column>
             <PopularSongs.Column>
               <PopularSongs.SongTitle>{ item.title }</PopularSongs.SongTitle>
               <PopularSongs.SongArtist>{ item.artist }</PopularSongs.SongArtist>
             </PopularSongs.Column>
-            <PopularSongs.Column>
-              <PopularSongs.Button>Up</PopularSongs.Button>
-              <PopularSongs.Button>Down</PopularSongs.Button>
+            <PopularSongs.Column display="flex">
+              <PopularSongs.Button
+                onClick={() => likeSong(item.id)}
+              >
+                { item.like }Up
+              </PopularSongs.Button>
+              <PopularSongs.Button
+                onClick={() => dislikeSong(item.id)}
+              >
+                { item.unlike } Down
+              </PopularSongs.Button>
             </PopularSongs.Column>
             <PopularSongs.Column>
-              <PopularSongs.Cart />
+              <PopularSongs.Cart>
+                {item.addedToCart && "Added"}
+              </PopularSongs.Cart>
             </PopularSongs.Column>
             <PopularSongs.Column>
               <PopularSongs.Lyrics>...</PopularSongs.Lyrics>
@@ -38,5 +51,8 @@ const PopularSongsContainer = ({ allSongs }) => {
 export default connect(
   (state) => ({
     allSongs: state.allSongs
-  }), null
+  }), {
+    likeSong,
+    dislikeSong
+  }
 )(PopularSongsContainer)

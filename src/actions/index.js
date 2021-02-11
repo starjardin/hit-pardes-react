@@ -1,5 +1,5 @@
 //TODO:
-actions
+//actions
   //TODO:1-add songs
   //TODO:2-like songs + 1
   //TODO:3-unlike songs + 1
@@ -8,18 +8,32 @@ actions
   //TODO:6-removeFromcartIem
   //TODO:7-emptycart
   
-export function addSongs (state, action) {
+export const ACTIONS = {
+  like: 'LIKE_SONG',
+  dislike: 'DISLIKE_SONG',
+  toggleFavorite: 'TOGGLE_FAVORITE',
+  addToCart: 'ADD_TO_CART',
+  removeFromCart: 'REMOVE_FROM_CART',
+  emptyCart: 'EMPTY_CART',
+  addSongs: 'ADD_SONGS'
+}
+  
+export function addSongs (newSongs) {
   return {
-    type: "ADD_SONGS"
+    type: ACTIONS.addSongs,
+    payload: newSongs,
   }
 }
-export function likeSongs (state, action) {
+
+export function likeSong (songId) {
   return {
-    type: "ADD_SONGS"
+    type: ACTIONS.like,
+    id: songId
   }
 }
-export function unlikeSongs (state, action) {
+export function dislikeSong (songId) {
   return {
-    type: "ADD_SONGS"
+    type: ACTIONS.dislike,
+    id: songId
   }
 }

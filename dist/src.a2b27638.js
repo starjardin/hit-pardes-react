@@ -38376,19 +38376,22 @@ var Container = _styledComponents.default.ul(_templateObject || (_templateObject
 
 exports.Container = Container;
 
-var Item = _styledComponents.default.li(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  list-style: none;\n  display: flex;\n  justify-content : space-between;\n  align-items: center;\n"])));
+var Item = _styledComponents.default.li(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  list-style: none;\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  align-items: center;\n  column-gap: 1rem;\n"])));
 
 exports.Item = Item;
 
-var Column = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  width : 30%;\n  padding-inline : 1rem;\n"])));
+var Column = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  display : ", ";\n  padding-inline : 1rem;\n"])), function (_ref) {
+  var display = _ref.display;
+  return display;
+});
 
 exports.Column = Column;
 
-var Favourite = _styledComponents.default.div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral([""])));
+var Favourite = _styledComponents.default.div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  \n"])));
 
 exports.Favourite = Favourite;
 
-var Button = _styledComponents.default.button(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral([""])));
+var Button = _styledComponents.default.button(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  cursor: pointer;\n"])));
 
 exports.Button = Button;
 
@@ -38714,7 +38717,57 @@ var CartContainer = function CartContainer() {
 
 var _default = CartContainer;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./HeaderContainer":"src/container/HeaderContainer.js"}],"src/container/popularSongsContainer.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./HeaderContainer":"src/container/HeaderContainer.js"}],"src/actions/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addSongs = addSongs;
+exports.likeSong = likeSong;
+exports.dislikeSong = dislikeSong;
+exports.ACTIONS = void 0;
+//TODO:
+//actions
+//TODO:1-add songs
+//TODO:2-like songs + 1
+//TODO:3-unlike songs + 1
+//TODO:4-togglefavourite songs
+//TODO:5-add to cart
+//TODO:6-removeFromcartIem
+//TODO:7-emptycart
+var ACTIONS = {
+  like: 'LIKE_SONG',
+  dislike: 'DISLIKE_SONG',
+  toggleFavorite: 'TOGGLE_FAVORITE',
+  addToCart: 'ADD_TO_CART',
+  removeFromCart: 'REMOVE_FROM_CART',
+  emptyCart: 'EMPTY_CART',
+  addSongs: 'ADD_SONGS'
+};
+exports.ACTIONS = ACTIONS;
+
+function addSongs(newSongs) {
+  return {
+    type: ACTIONS.addSongs,
+    payload: newSongs
+  };
+}
+
+function likeSong(songId) {
+  return {
+    type: ACTIONS.like,
+    id: songId
+  };
+}
+
+function dislikeSong(songId) {
+  return {
+    type: ACTIONS.dislike,
+    id: songId
+  };
+}
+},{}],"src/container/popularSongsContainer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38730,14 +38783,28 @@ var _components = require("../components");
 
 var _HeaderContainer = _interopRequireDefault(require("./HeaderContainer"));
 
+var _actions = require("../actions");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PopularSongsContainer = function PopularSongsContainer(_ref) {
-  var allSongs = _ref.allSongs;
+  var allSongs = _ref.allSongs,
+      likeSong = _ref.likeSong,
+      dislikeSong = _ref.dislikeSong;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_HeaderContainer.default, null), _react.default.createElement(_components.PopularSongs, null, allSongs.map(function (item) {
     return _react.default.createElement(_components.PopularSongs.Item, {
       key: item.id
-    }, _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Favourite, null)), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.SongTitle, null, item.title), _react.default.createElement(_components.PopularSongs.SongArtist, null, item.artist)), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Button, null, "Up"), _react.default.createElement(_components.PopularSongs.Button, null, "Down")), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Cart, null)), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Lyrics, null, "...")));
+    }, _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Favourite, null, item.favorite && "favorited")), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.SongTitle, null, item.title), _react.default.createElement(_components.PopularSongs.SongArtist, null, item.artist)), _react.default.createElement(_components.PopularSongs.Column, {
+      display: "flex"
+    }, _react.default.createElement(_components.PopularSongs.Button, {
+      onClick: function onClick() {
+        return likeSong(item.id);
+      }
+    }, item.like, "Up"), _react.default.createElement(_components.PopularSongs.Button, {
+      onClick: function onClick() {
+        return dislikeSong(item.id);
+      }
+    }, item.unlike, " Down")), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Cart, null, item.addedToCart && "Added")), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Lyrics, null, "...")));
   })));
 };
 
@@ -38745,10 +38812,13 @@ var _default = (0, _reactRedux.connect)(function (state) {
   return {
     allSongs: state.allSongs
   };
-}, null)(PopularSongsContainer);
+}, {
+  likeSong: _actions.likeSong,
+  dislikeSong: _actions.dislikeSong
+})(PopularSongsContainer);
 
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../components":"src/components/index.js","./HeaderContainer":"src/container/HeaderContainer.js"}],"src/container/stylesContainer.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../components":"src/components/index.js","./HeaderContainer":"src/container/HeaderContainer.js","../actions":"src/actions/index.js"}],"src/container/stylesContainer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38812,6 +38882,14 @@ exports.default = void 0;
 
 var _redux = require("redux");
 
+var _actions = require("../actions");
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function cartItems() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -38820,7 +38898,40 @@ function cartItems() {
 
 function allSongs() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  return state;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions.ACTIONS.like:
+      {
+        var likeSongs = state.map(function (song) {
+          if (song.id === action.id) {
+            return _objectSpread(_objectSpread({}, song), {}, {
+              like: song.like + 1
+            });
+          }
+
+          return song;
+        });
+        return state = likeSongs;
+      }
+
+    case _actions.ACTIONS.dislike:
+      {
+        var unlikeSongs = state.map(function (song) {
+          if (song.id === action.id) {
+            return _objectSpread(_objectSpread({}, song), {}, {
+              unlike: song.like + 1
+            });
+          }
+
+          return song;
+        });
+        return unlikeSongs;
+      }
+
+    default:
+      return state;
+  }
 }
 
 var _default = (0, _redux.combineReducers)({
@@ -38829,7 +38940,7 @@ var _default = (0, _redux.combineReducers)({
 });
 
 exports.default = _default;
-},{"redux":"node_modules/redux/es/redux.js"}],"songs.js":[function(require,module,exports) {
+},{"redux":"node_modules/redux/es/redux.js","../actions":"src/actions/index.js"}],"songs.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38844,7 +38955,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var songs = {
   allSongs: [(_ref = {
     title: "American Girl",
-    addedToCart: false,
+    addedToCart: true,
     artist: "Tom Petty",
     year: "1977",
     id: 1347538505564516,
@@ -38852,11 +38963,11 @@ var songs = {
     duration: "3:34",
     like: 10,
     unlike: 30,
-    favorite: "fasle",
+    favorite: "true",
     price: 34
   }, _defineProperty(_ref, "style", "country"), _defineProperty(_ref, "lyrics", "Well she was an American girl \n                  Raised on promises\n                  She couldn't help thinkin' that there\n                  Was a little more to life\n                  Somewhere else\n                  After all it was a great big world\n                  With lots of places to run to\n                  Yeah, and if she had to die tryin'\n                  She had one little promise\n                  She was gonna keep\n                  Oh yeah, alright\n                  Take it easy baby\n                  Make it last all night\n                  She was an American girl\n                  Well, it was kind of cold that night\n                  She stood alone on her balcony\n                  Yeah, she could hear the cars roll by\n                  Out on 441\n                  Like waves crashin' on the beach\n                  And for one\u2026"), _ref), (_ref2 = {
     title: "American Music",
-    addedToCart: false,
+    addedToCart: true,
     artist: "Violent Femmes",
     year: "1991",
     id: 753850556416,
@@ -38876,7 +38987,7 @@ var songs = {
     duration: "3:34",
     like: 4,
     unlike: 10,
-    favorite: "fasle",
+    favorite: "true",
     price: 23
   }, _defineProperty(_ref3, "style", "Jazz"), _defineProperty(_ref3, "lyrics", "A long long time ago\n                I can still remember how\n                That music used to make me smile\n                And I knew if I had my chance\n                That I could make those people dance\n                And maybe they'd be happy for a while\n                But February made me shiver\n                With every paper I'd deliver\n\n                Bad news on the doorstep\n                I couldn't take one more step\n                I can't remember if I cried\n                When I read about his widowed bride\n                Something touched me deep inside\n                The day the music died\n                So"), _ref3), (_ref4 = {
     title: "A Sailor's Christmas",
@@ -38915,7 +39026,7 @@ var songs = {
     favorite: "fasle"
   }, _defineProperty(_ref6, "style", "oldies"), _defineProperty(_ref6, "price", 30), _defineProperty(_ref6, "lyrics", "Can't you see that it's just rainin'\n                  Ain't no need to go outside\n                  But baby\n                  You hardly even notice\n                  When I try to show you this\n                  Song is meant to keep you\n                  Doin' what you're supposed to\n\n                  Wakin' up too early\n                  Maybe we could sleep in\n                  Make you banana pancakes\n                  Pretend like its the weekend now\n                  We could pretend it all the time\n                  Can't you see that it's just rainin'\n                  There ain't no need to go outside\n                  Just maybe\n\n                  Halaka ukulele mama made a baby\n                  Really don't mind the practice\n                  Cause you're my little lady\n                  Lady lady love me\n                  Cause I love to lay here lazy\n                  We could close the curtains\n                  Pretend like there's no world outside\n\n                  We could pretend it all the time\n                  And can't you see that it's just rainin'\n                  There ain't no need to go outside\n                  Ain't no need ain't no need\n                  Mmm, mmm, mmm\n                  Can't you see can't you\u2026"), _ref6), (_ref7 = {
     title: "Big Parade",
-    addedToCart: false,
+    addedToCart: true,
     artist: "The Lumineers",
     year: "2012",
     id: 538505542342426,
@@ -38923,7 +39034,7 @@ var songs = {
     duration: "3:34",
     like: 3,
     unlike: 3,
-    favorite: "fasle",
+    favorite: "true",
     price: 21
   }, _defineProperty(_ref7, "style", "rap"), _defineProperty(_ref7, "lyrics", "Lovely girl won't you stay, won't you stay, stay with me\n                  All my life I was blind, I was blind, now I see\n                  Lovely girl won't you stay, won't you stay, stay with me\n                  All my life I was blind, I was blind, now I see\n                  Fleet of black, fleet of black limousines\n\n                  Oh tinted machines, here comes the cavalcade\n                  With the armored cars, armored cars like Barettas\n                  Flags on antennae designed to keep me safe, keep me safe\n                  And oh my my, oh hey hey\n                  Here he comes, the candidate\n                  Blue eyed boy, United States\n                  Vote for him, the candidate\n                  Diamonds cut, diamonds cut for the karats\n\n                  Plaster of Paris, the floats fill up the street\n                  And the beauty queens, beauty queens with the white gloves\n                  All sick from the night clubs, they wave with pageantry, pageantry\n                  And oh my my, oh hey hey\n                  Here it\u2026"), _ref7), (_ref8 = {
     title: "Brown Eyed Girl",
