@@ -10,6 +10,7 @@ import {
   Lyrics,
   SongTitle,
   SongArtist,
+  Image,
 } from './styles/popularSongsStyles'
 
 const PopularSongs = ({children, ...restProps }) => {
@@ -52,15 +53,8 @@ PopularSongs.SongArtist = function PopularSongsSongArtist ({ children, ...restPr
   return <SongArtist { ...restProps } >{ children }</SongArtist>
 }
 
-/*
-
-TODO:
-  item>5children
-  1-like div
-  2-title and artist div > 2spans
-  3-button div>buttons
-  4-cart div
-  5-lyrics div
- */
+PopularSongs.Image = function PopularSongsImage ({ children, ...restProps }) {
+  return <Image { ...restProps } >{ children }</Image>
+}
 
 export default PopularSongs

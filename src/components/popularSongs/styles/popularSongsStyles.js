@@ -16,12 +16,17 @@ export const Column = styled.div`
   padding-inline : 1rem;
 `
 export const Favourite = styled.div`
-  
+  cursor: pointer;
 `
 export const Button = styled.button`
   cursor: pointer;
 `
-export const Cart = styled.div``
+export const Cart = styled.div`
+  padding : .5rem;
+`
 export const Lyrics = styled.div``
 export const SongTitle = styled.h2``
 export const SongArtist = styled.p``
+export const Image = styled.img`
+  cursor: pointer;
+`

@@ -1,23 +1,55 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { PopularSongs } from '../components'
 import HeaderContianer from './HeaderContainer'
-import { likeSong, dislikeSong } from '../actions'
+import {
+  likeSong,
+  dislikeSong,
+  addToCart,
+  removeFromCart,
+  toggleFavorite,
+} from '../actions'
+import FullShoppingCart from '../assets/full-shopping-cart.svg'
+import ShoppingCart from '../assets/shopping-cart.svg'
+import { Link } from 'react-router-dom'
 
-const PopularSongsContainer = ({ allSongs, likeSong, dislikeSong }) => {
+const PopularSongsContainer = () => {
+  const allSongs = useSelector(state => state.allSongs)
+  const cartItems = useSelector(state => state.cartItems)
+  const dispatch = useDispatch()
+  
+  function showCart (songId) {
+    const isAlreadyInCart = cartItems.some(song => song.id === songId)
+    if (isAlreadyInCart) {
+      return <PopularSongs.Image 
+        src={FullShoppingCart} 
+        alt="full-shopping-chart" 
+        className="shopping-cart"
+      />
+    } else {
+      return <PopularSongs.Image 
+        src={ShoppingCart} 
+        alt="shopping-chart" 
+        className="shopping-cart"
+      />
+    }
+  }
+  
   return (
     <>
       <HeaderContianer />
       <PopularSongs>
-        { allSongs.sort((a, b) => {
-          const like = a.like - b.unlike
-          const unlike = b.like - a.unlike
+        { allSongs.sort((songA, songB) => {
+          const like = songA.like - songA.unlike
+          const unlike = songB.like - songB.unlike
           return unlike - like
         }).map(item => (
           <PopularSongs.Item key={ item.id }>
             <PopularSongs.Column>
-              <PopularSongs.Favourite>
+              <PopularSongs.Favourite
+                onClick={() => dispatch(toggleFavorite(item.id))}
+              >
                  {item.favorite && "favorited"}
               </PopularSongs.Favourite>
             </PopularSongs.Column>
@@ -27,23 +59,27 @@ const PopularSongsContainer = ({ allSongs, likeSong, dislikeSong }) => {
             </PopularSongs.Column>
             <PopularSongs.Column display="flex">
               <PopularSongs.Button
-                onClick={() => likeSong(item.id)}
+                onClick={() => dispatch(likeSong(item.id))}
               >
                 { item.like }Up
               </PopularSongs.Button>
               <PopularSongs.Button
-                onClick={() => dislikeSong(item.id)}
+                onClick={() => dispatch(dislikeSong(item.id))}
               >
                 { item.unlike } Down
               </PopularSongs.Button>
             </PopularSongs.Column>
             <PopularSongs.Column>
-              <PopularSongs.Cart>
-                {item.addedToCart && "Added"}
+              <PopularSongs.Cart
+                onClick={() => (dispatch(addToCart(item.id)))}
+              >
+                {showCart(item.id)}
               </PopularSongs.Cart>
             </PopularSongs.Column>
             <PopularSongs.Column>
-              <PopularSongs.Lyrics>...</PopularSongs.Lyrics>
+              <PopularSongs.Lyrics>
+                <Link to={`/song/${item.id}`}>Link</Link>
+              </PopularSongs.Lyrics>
             </PopularSongs.Column>
           </PopularSongs.Item>
         ))}
@@ -52,11 +88,4 @@ const PopularSongsContainer = ({ allSongs, likeSong, dislikeSong }) => {
   )
 }
 
-export default connect(
-  (state) => ({
-    allSongs: state.allSongs
-  }), {
-    likeSong,
-    dislikeSong
-  }
-)(PopularSongsContainer)
+export default PopularSongsContainer;

@@ -1,6 +1,15 @@
 import React from 'react'
 
-import { Container, Form, Input, Option, SubmitButton, Select } from './styles/addSongsStyles'
+import {
+  Container,
+  Form,
+  Input,
+  Option,
+  SubmitButton,
+  Select,
+  Textarea,
+  Label,
+} from './styles/addSongsStyles'
 
 const AddSongs = ({children, ...restProps}) => {
   return (
@@ -22,6 +31,14 @@ AddSongs.Option = function AddSongsOption ({ children, ...restProps }) {
 
 AddSongs.SubmitButton = function AddSongsSubmitButton ({ children, ...restProps }) {
   return <SubmitButton { ...restProps }>{ children }</SubmitButton>
+}
+
+AddSongs.Textarea = function AddSongsTextarea ({ children, ...restProps }) {
+  return <Textarea { ...restProps }>{ children }</Textarea>
+}
+
+AddSongs.Label = function AddSongsLabel ({ children, ...restProps }) {
+  return <Label { ...restProps }>{ children }</Label>
 }
 
 AddSongs.Select = function AddSongsSelect ({ children, ...restProps }) {
