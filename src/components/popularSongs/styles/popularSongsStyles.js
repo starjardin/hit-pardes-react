@@ -10,6 +10,12 @@ export const Item = styled.li`
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
   column-gap: 1rem;
+  background-color: #272343;
+  padding-inline: 2rem;
+  padding-block: 2rem;
+  list-style: none;
+  color: #ffffff;
+  margin: 1rem;
 `
 export const Column = styled.div`
   display : ${({ display }) => (display)};
@@ -24,9 +30,19 @@ export const Button = styled.button`
 export const Cart = styled.div`
   padding : .5rem;
 `
-export const Lyrics = styled.div``
-export const SongTitle = styled.h2``
-export const SongArtist = styled.p``
+export const Lyrics = styled.div`
+  * {
+    color: #fff;
+  }
+`
+export const SongTitle = styled.h2`
+  font-size: 26px;
+  font-weight: normal;
+`
+export const SongArtist = styled.h4`
+  font-size: 16px;
+  font-weight: normal;
+`
 export const Image = styled.img`
   cursor: pointer;
 `

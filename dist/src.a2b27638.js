@@ -38375,11 +38375,11 @@ var Container = _styledComponents.default.div(_templateObject || (_templateObjec
 
 exports.Container = Container;
 
-var Title = _styledComponents.default.h2(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral([""])));
+var Title = _styledComponents.default.h2(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  text-align: center;\n  font-size: 36px;\n  line-height: 46px;\n"])));
 
 exports.Title = Title;
 
-var Link = _styledComponents.default.p(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral([""])));
+var Link = _styledComponents.default.p(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  a {\n    text-decoration: none;\n    color: #111111;\n    font-size: 23px;\n  }\n"])));
 
 exports.Link = Link;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/header/index.js":[function(require,module,exports) {
@@ -38448,7 +38448,7 @@ var Container = _styledComponents.default.ul(_templateObject || (_templateObject
 
 exports.Container = Container;
 
-var Item = _styledComponents.default.li(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  list-style: none;\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  align-items: center;\n  column-gap: 1rem;\n"])));
+var Item = _styledComponents.default.li(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  list-style: none;\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  align-items: center;\n  column-gap: 1rem;\n  background-color: #272343;\n  padding-inline: 2rem;\n  padding-block: 2rem;\n  list-style: none;\n  color: #ffffff;\n  margin: 1rem;\n"])));
 
 exports.Item = Item;
 
@@ -38471,15 +38471,15 @@ var Cart = _styledComponents.default.div(_templateObject6 || (_templateObject6 =
 
 exports.Cart = Cart;
 
-var Lyrics = _styledComponents.default.div(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral([""])));
+var Lyrics = _styledComponents.default.div(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\n  * {\n    color: #fff;\n  }\n"])));
 
 exports.Lyrics = Lyrics;
 
-var SongTitle = _styledComponents.default.h2(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral([""])));
+var SongTitle = _styledComponents.default.h2(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n  font-size: 26px;\n  font-weight: normal;\n"])));
 
 exports.SongTitle = SongTitle;
 
-var SongArtist = _styledComponents.default.p(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral([""])));
+var SongArtist = _styledComponents.default.h4(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["\n  font-size: 16px;\n  font-weight: normal;\n"])));
 
 exports.SongArtist = SongArtist;
 
@@ -38941,23 +38941,23 @@ var Container = _styledComponents.default.div(_templateObject || (_templateObjec
 
 exports.Container = Container;
 
-var Image = _styledComponents.default.img(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral([""])));
+var Image = _styledComponents.default.img(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  cursor: pointer;\n"])));
 
 exports.Image = Image;
 
-var ListItem = _styledComponents.default.li(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral([""])));
+var ListItem = _styledComponents.default.li(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  list-style: none;\n"])));
 
 exports.ListItem = ListItem;
 
-var Fragment = _styledComponents.default.div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral([""])));
+var Fragment = _styledComponents.default.div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  margin: 0;\n"])));
 
 exports.Fragment = Fragment;
 
-var Price = _styledComponents.default.p(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral([""])));
+var Price = _styledComponents.default.p(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\n  font-size: 22px;\n  line-height: 35px;\n  font-weight: 600;\n"])));
 
 exports.Price = Price;
 
-var Artist = _styledComponents.default.h4(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral([""])));
+var Artist = _styledComponents.default.h4(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\n  font-size: 18px;\n  font-weight: 500;\n  line-height: 30px;\n"])));
 
 exports.Artist = Artist;
 
@@ -38965,11 +38965,11 @@ var Button = _styledComponents.default.button(_templateObject7 || (_templateObje
 
 exports.Button = Button;
 
-var SongTitle = _styledComponents.default.h3(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral([""])));
+var SongTitle = _styledComponents.default.h3(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\n  font-size: 25px;\n  font-weight: bold;\n"])));
 
 exports.SongTitle = SongTitle;
 
-var Link = _styledComponents.default.p(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral([""])));
+var Link = _styledComponents.default.p(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["\n  margin: 0;\n"])));
 
 exports.Link = Link;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/cart/index.js":[function(require,module,exports) {
@@ -39303,7 +39303,7 @@ var CartContainer = function CartContainer() {
     setTimeout(function () {
       setButtonTextContet("Buy Now");
       dispatch((0, _actions.emptyCart)());
-    }, 1000);
+    }, 500 * cartItems.length);
     setButtonTextContet("Buying.....");
   }
 
@@ -39337,6 +39337,10 @@ exports.default = _default;
 module.exports = "/full-shopping-cart.cad06971.svg";
 },{}],"src/assets/shopping-cart.svg":[function(require,module,exports) {
 module.exports = "/shopping-cart.6496b7fd.svg";
+},{}],"src/assets/heart.svg":[function(require,module,exports) {
+module.exports = "/heart.340b462a.svg";
+},{}],"src/assets/full-heart.svg":[function(require,module,exports) {
+module.exports = "/full-heart.662ee845.svg";
 },{}],"src/container/popularSongsContainer.js":[function(require,module,exports) {
 "use strict";
 
@@ -39347,19 +39351,23 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
 var _reactRedux = require("react-redux");
+
+var _fullShoppingCart = _interopRequireDefault(require("../assets/full-shopping-cart.svg"));
+
+var _shoppingCart = _interopRequireDefault(require("../assets/shopping-cart.svg"));
+
+var _heart = _interopRequireDefault(require("../assets/heart.svg"));
+
+var _fullHeart = _interopRequireDefault(require("../assets/full-heart.svg"));
 
 var _components = require("../components");
 
 var _HeaderContainer = _interopRequireDefault(require("./HeaderContainer"));
 
 var _actions = require("../actions");
-
-var _fullShoppingCart = _interopRequireDefault(require("../assets/full-shopping-cart.svg"));
-
-var _shoppingCart = _interopRequireDefault(require("../assets/shopping-cart.svg"));
-
-var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39403,7 +39411,9 @@ var PopularSongsContainer = function PopularSongsContainer() {
       onClick: function onClick() {
         return dispatch((0, _actions.toggleFavorite)(item.id));
       }
-    }, item.favorite && "favorited")), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.SongTitle, null, item.title), _react.default.createElement(_components.PopularSongs.SongArtist, null, item.artist)), _react.default.createElement(_components.PopularSongs.Column, {
+    }, _react.default.createElement(_components.PopularSongs.Image, {
+      src: "".concat(item.favorite ? _heart.default : _fullHeart.default)
+    }))), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.SongTitle, null, item.title), _react.default.createElement(_components.PopularSongs.SongArtist, null, item.artist)), _react.default.createElement(_components.PopularSongs.Column, {
       display: "flex"
     }, _react.default.createElement(_components.PopularSongs.Button, {
       onClick: function onClick() {
@@ -39415,17 +39425,17 @@ var PopularSongsContainer = function PopularSongsContainer() {
       }
     }, item.unlike, " Down")), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Cart, {
       onClick: function onClick() {
-        return dispatch((0, _actions.addToCart)(item.id));
+        return dispatch((0, _actions.addToCart)(item));
       }
     }, showCart(item.id))), _react.default.createElement(_components.PopularSongs.Column, null, _react.default.createElement(_components.PopularSongs.Lyrics, null, _react.default.createElement(_reactRouterDom.Link, {
       to: "/song/".concat(item.id)
-    }, "Link"))));
+    }, "Lyrics"))));
   })));
 };
 
 var _default = PopularSongsContainer;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../components":"src/components/index.js","./HeaderContainer":"src/container/HeaderContainer.js","../actions":"src/actions/index.js","../assets/full-shopping-cart.svg":"src/assets/full-shopping-cart.svg","../assets/shopping-cart.svg":"src/assets/shopping-cart.svg","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/container/lyricsContainer.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../assets/full-shopping-cart.svg":"src/assets/full-shopping-cart.svg","../assets/shopping-cart.svg":"src/assets/shopping-cart.svg","../assets/heart.svg":"src/assets/heart.svg","../assets/full-heart.svg":"src/assets/full-heart.svg","../components":"src/components/index.js","./HeaderContainer":"src/container/HeaderContainer.js","../actions":"src/actions/index.js"}],"src/container/lyricsContainer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39913,7 +39923,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49886" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60049" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

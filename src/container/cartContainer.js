@@ -19,7 +19,7 @@ const CartContainer = () => {
     setTimeout(() => {
       setButtonTextContet("Buy Now")
       dispatch(emptyCart())
-    }, 1000)
+    }, 500 * cartItems.length)
     setButtonTextContet("Buying.....")
   }
   

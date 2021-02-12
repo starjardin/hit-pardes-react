@@ -1,18 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
+import FullShoppingCart from '../assets/full-shopping-cart.svg'
+import ShoppingCart from '../assets/shopping-cart.svg'
+import heart from '../assets/heart.svg'
+import fullHeart from '../assets/full-heart.svg'
 import { PopularSongs } from '../components'
 import HeaderContianer from './HeaderContainer'
 import {
   likeSong,
   dislikeSong,
   addToCart,
-  removeFromCart,
   toggleFavorite,
 } from '../actions'
-import FullShoppingCart from '../assets/full-shopping-cart.svg'
-import ShoppingCart from '../assets/shopping-cart.svg'
-import { Link } from 'react-router-dom'
+
 
 const PopularSongsContainer = () => {
   const allSongs = useSelector(state => state.allSongs)
@@ -50,7 +52,9 @@ const PopularSongsContainer = () => {
               <PopularSongs.Favourite
                 onClick={() => dispatch(toggleFavorite(item.id))}
               >
-                 {item.favorite && "favorited"}
+                 <PopularSongs.Image 
+                  src={`${item.favorite ? heart : fullHeart}`} 
+                />
               </PopularSongs.Favourite>
             </PopularSongs.Column>
             <PopularSongs.Column>
@@ -71,14 +75,14 @@ const PopularSongsContainer = () => {
             </PopularSongs.Column>
             <PopularSongs.Column>
               <PopularSongs.Cart
-                onClick={() => (dispatch(addToCart(item.id)))}
+                onClick={() => (dispatch(addToCart(item)))}
               >
                 {showCart(item.id)}
               </PopularSongs.Cart>
             </PopularSongs.Column>
             <PopularSongs.Column>
               <PopularSongs.Lyrics>
-                <Link to={`/song/${item.id}`}>Link</Link>
+                <Link to={`/song/${item.id}`}>Lyrics</Link>
               </PopularSongs.Lyrics>
             </PopularSongs.Column>
           </PopularSongs.Item>
